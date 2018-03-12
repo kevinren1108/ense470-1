@@ -1,11 +1,14 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <div id="nav__top">
-
+    <div id="navbar">
+      <div id="navbar__top">
+        <div id="navbar__title">Software Procurement Portal</div>
+        <button id="navbar__btn-login">Log in</button>
       </div>
-      <div id="nav__bottom">
-
+      <div id="navbar__bottom">
+        <div id="navbar__bottom__links"></div>
+        <div class="navbar__bottom__link" id="navbar_home">Home</div>
+        <div class="navbar__bottom__link" id="navbar_placeholder">Placeholder</div>
       </div>
     </div>
     <router-view/>
@@ -24,7 +27,7 @@ html, body {
   margin: 0;
 }
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: Arial, Helvetica, 'Avenir', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -37,14 +40,63 @@ html, body {
   grid-template-rows: 1fr 5fr 1fr;
   background: #F4F4F5;
 }
-#nav {
+#navbar {
   grid-row: 1 / 2;
-  background: #2c3e50;
+  display: flex;
+  flex-direction: column;
 }
-#nav__top {
-  background: #2c3e50;
+#navbar__top {
+  width: 100%;
+  height: 50%;
+  background: #1F2C33;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-#nav__bottom {
+#navbar__title {
+  color: #F2FAFD;
+  margin: 0 20px;
+}
+#navbar__btn-login {
+  border: none;
+  border-radius: 4px;
+  color: #F2FAFD;
+  background: #55BA47;
+  padding: 8px 16px;
+  margin: 0 20px;
+}
+#navbar__btn-login:hover {
+  background: #499e3e;
+  cursor: pointer;
+}
+#navbar__btn-login:active {
+  background: #408a36;
+}
+#navbar__bottom {
+  width: 100%;
+  height: 50%;
   background: #0098DB;
+  color: #F2FAFD;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+#navbar__bottom__links {
+  margin: 0 20px;
+}
+.navbar__bottom__link {
+  height: 100%;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+}
+.navbar__bottom__link:hover {
+  color: #0098d8;
+  background: #F4F4F5;
+  cursor: pointer;
+}
+.navbar__bottom__link:active {
+  color: #0098d8;
+  background: #F4F4F5;
 }
 </style>
