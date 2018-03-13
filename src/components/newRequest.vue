@@ -6,11 +6,21 @@
         <div class='page__content'>
             <table>
                 <tr>
-                    <td>First request</td>
-                    <td><button class='btn--blue request__button'>view</button></td>
-                    <td><button class='btn--blue request__button'>delete</button></td>
+                    <td>Filter1</td>
+                    <button class='btn--blue'>Filter1</button>
                 </tr>
-                <router-link to="/newRequest"><button class='btn--blue btn--full'>New Request</button></router-link>
+                <tr>
+                    <td>Filter2</td>
+                    <td><button class='btn--blue'>Filter2</button></td>
+                </tr>
+                <tr>
+                    <td>List of program</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><button class='btn--blue btn--full'>Filter3</button></td>
+                </tr>
+                <button class='btn--blue btn--full'>Submit Request</button>
             </table>
         </div>
     </div>
@@ -21,7 +31,7 @@ export default {
   name: 'signup',
   data () {
     return {
-      titel: 'Current Request'
+      titel: 'Make a new Request'
     }
   }
 }
@@ -63,5 +73,4 @@ a {
     display: inline-block;
     font-size: 16px;
 }
-
 </style>
