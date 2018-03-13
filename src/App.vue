@@ -161,7 +161,7 @@ button:hover {
   margin: 20px 10%;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 2px 2px 12px 0 rgba(0,0,0,0.125), 
+  box-shadow: 2px 2px 12px 0 rgba(0,0,0,0.125),
               4px 6px 18px 0 rgba(0,0,0,0.075);
 }
 #footer {

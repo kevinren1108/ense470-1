@@ -7,9 +7,9 @@
             <table>
                 <tr><td>First Name: </td><td> <input type="text" id="first__name" size="30" /></td></tr>
                 <tr><td>Last Name: </td><td> <input type="text" id="last__name" size="30" /></td></tr>
-                <tr><td>Email: </td><td> <input type="email" id="email" size="30" /></td></tr>        
-                <tr><td>Password: </td><td> <input type="password" id="password" size="30" /></td></tr>      
-                <tr><td>Verify Password: </td><td> <input type="password" id="vf__password" size="30" /></td></tr>             
+                <tr><td>Email: </td><td> <input type="email" id="email" size="30" /></td></tr>
+                <tr><td>Password: </td><td> <input type="password" id="password" size="30" /></td></tr>
+                <tr><td>Verify Password: </td><td> <input type="password" id="vf__password" size="30" /></td></tr>
                 <tr><td>Invitation Code: </td><td> <input type="text" id="inv__code" size="30" /></td></tr>
             </table>
 
