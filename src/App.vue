@@ -11,7 +11,10 @@
         <div class="navbar__bottom__link" id="navbar_placeholder">Placeholder</div>
       </div>
     </div>
-    <router-view/>
+    <div id="body">
+      <router-view id="content"/>
+    </div>
+    <div id="footer"></div>
   </div>
 </template>
 
@@ -37,7 +40,7 @@ html, body {
   height: 100vh;
 
   display: grid;
-  grid-template-rows: 1fr 5fr 1fr;
+  grid-template-rows: 2fr 11fr 1fr;
   background: #F4F4F5;
 }
 #navbar {
@@ -82,7 +85,7 @@ html, body {
   justify-content: flex-start;
 }
 #navbar__bottom__links {
-  margin: 0 20px;
+  margin: 0 10px;
 }
 .navbar__bottom__link {
   height: 100%;
@@ -98,5 +101,30 @@ html, body {
 .navbar__bottom__link:active {
   color: #0098d8;
   background: #F4F4F5;
+}
+#body {
+  width: 100%;
+  grid-row: 2 / 3;
+  margin: 0;
+  padding: 0;
+  background: #F4F4F5;
+  display: flex;
+  align-items: center;
+}
+#content {
+  width: 100%;
+  box-sizing: border-box;
+  background: #FFFFFF;
+  margin: 20px 10%;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 2px 2px 12px 0 rgba(0,0,0,0.125), 
+              4px 6px 18px 0 rgba(0,0,0,0.075);
+}
+#footer {
+  width: 100%;
+  height: 100%;
+  background: #1F2C33;
+  grid-row: 3 / 4;
 }
 </style>
