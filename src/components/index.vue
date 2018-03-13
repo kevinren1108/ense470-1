@@ -8,9 +8,8 @@
             <h2>{{ description }} </h2>
         </div>
 
-        <div id="app-5">
-            <p>{{ message }}</p>
-            <p><button>Log in</button> Dont have an account? <a href="signup">Sign up now</a></p>
+        <div>
+            <p><button class="btn--blue">Log in</button> Dont have an account? <a href="/#/signup">Sign up now</a></p>
         </div>
     </div>
 </template>
@@ -21,7 +20,7 @@ export default {
   data () {
     return {
       welcome: 'Welcome',
-      description: 'This is a government website allow user download their desired software',
+      description: 'This is a government website allow user download their desired software'
     }
   }
 }
@@ -29,6 +28,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+h1, h2, p {
+    text-align: left;
+}
+
 h1, h2 {
   font-weight: normal;
 }
@@ -43,6 +46,7 @@ li {
 a {
   color: #42b983;
 }
+
 button {
     background-color: #0098DB; /* Green */
     border: none;
