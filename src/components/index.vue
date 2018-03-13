@@ -1,5 +1,5 @@
 <template>
-    <div class="welcome">
+    <div class="page">
         <div>
             <h1>{{ welcome }}</h1>
         </div>
