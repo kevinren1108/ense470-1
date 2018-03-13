@@ -3,7 +3,7 @@
     <div id="navbar">
       <div id="navbar__top">
         <div id="navbar__title">Software Procurement Portal</div>
-        <button id="navbar__btn-login">Log in</button>
+        <button id="navbar__btn-login" class="btn--green btn--small">Log in</button>
       </div>
       <div id="navbar__bottom">
         <div id="navbar__bottom__links"></div>
@@ -28,6 +28,24 @@ export default {
 html, body {
   padding: 0;
   margin: 0;
+}
+.btn--green {
+  border: none;
+  color: #F2FAFD;
+  background: #55BA47;
+}
+.btn--blue {
+  border: none;
+  color: #F2FAFD;
+  background: #0098DB;
+}
+.btn--small {
+  border-radius: 4px;
+  padding: 8px 16px;
+}
+.btn--large {
+  border-radius: 8px;
+  padding: 16px 32px;
 }
 #app {
   font-family: Arial, Helvetica, 'Avenir', sans-serif;
@@ -61,11 +79,6 @@ html, body {
   margin: 0 20px;
 }
 #navbar__btn-login {
-  border: none;
-  border-radius: 4px;
-  color: #F2FAFD;
-  background: #55BA47;
-  padding: 8px 16px;
   margin: 0 20px;
 }
 #navbar__btn-login:hover {
