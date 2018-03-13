@@ -1,5 +1,5 @@
 <template>
-    <div class="welcome">
+    <div class="page">
         <div>
             <h1>{{ welcome }}</h1>
         </div>
@@ -9,7 +9,8 @@
         </div>
 
         <div>
-            <p><button class="btn--blue">Log in</button> Dont have an account? <a href="/#/signup">Sign up now</a></p>
+            <router-link to="/login"><button class="btn--blue btn--large">Log in</button></router-link>
+            <p>Dont have an account? <a href="/#/signup">Sign up now</a></p>
         </div>
     </div>
 </template>
@@ -45,17 +46,5 @@ li {
 }
 a {
   color: #42b983;
-}
-
-button {
-    background-color: #0098DB; /* Green */
-    border: none;
-    border-radius: 4px;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
 }
 </style>

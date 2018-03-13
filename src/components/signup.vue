@@ -1,7 +1,7 @@
 <template>
-    <div class="welcome">
-        <div>
-            <h1>{{ titel }}</h1>
+    <div class="page">
+        <div class="page__header">
+            <h1 class="page__title">{{ title }}</h1>
         </div>
         <div>
             <table>
@@ -13,7 +13,7 @@
                 <tr><td>Invitation Code: </td><td> <input type="text" id="inv__code" size="30" /></td></tr>
             </table>
 
-            <p><input class="btn--blue" type="submit" value="Submit"></p>
+            <button class="btn--blue btn--full">Sign up</button>
         </div>
     </div>
 </template>
@@ -23,7 +23,7 @@ export default {
   name: 'signup',
   data () {
     return {
-      titel: 'Sign up',
+      title: 'Sign up',
     }
   }
 }
@@ -48,16 +48,5 @@ li {
 }
 a {
   color: #42b983;
-}
-.btn--blue {
-    background-color: #0098DB; /* Green */
-    border: none;
-    border-radius: 4px;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
 }
 </style>
