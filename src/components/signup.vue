@@ -23,7 +23,7 @@ export default {
   name: 'signup',
   data () {
     return {
-      title: 'Sign up',
+      title: 'Sign up'
     }
   }
 }

@@ -61,13 +61,13 @@ button:hover {
 .btn--small {
   border-radius: 4px;
   padding: 8px 16px;
-  box-shadow: 1px 2px 6px 0 rgba(0,0,0,0.125), 
+  box-shadow: 1px 2px 6px 0 rgba(0,0,0,0.125),
               2px 4px 12px 0 rgba(0,0,0,0.075);
 }
 .btn--large {
   border-radius: 8px;
   padding: 16px 32px;
-  box-shadow: 1px 2px 6px 0 rgba(0,0,0,0.125), 
+  box-shadow: 1px 2px 6px 0 rgba(0,0,0,0.125),
               2px 4px 12px 0 rgba(0,0,0,0.075);
 }
 .btn--full {
@@ -75,7 +75,7 @@ button:hover {
   padding: 16px 0;
   width: 100%;
   font-size: 1.3rem;
-  box-shadow: 1px 2px 6px 0 rgba(0,0,0,0.125), 
+  box-shadow: 1px 2px 6px 0 rgba(0,0,0,0.125),
               2px 4px 12px 0 rgba(0,0,0,0.075);
 }
 #app {
@@ -105,7 +105,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 1px 2px 6px 0 rgba(0,0,0,0.125), 
+  box-shadow: 1px 2px 6px 0 rgba(0,0,0,0.125),
               2px 4px 12px 0 rgba(0,0,0,0.075);
 }
 #navbar__title {
@@ -124,7 +124,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  box-shadow: 1px 2px 6px 0 rgba(0,0,0,0.125), 
+  box-shadow: 1px 2px 6px 0 rgba(0,0,0,0.125),
               2px 4px 12px 0 rgba(0,0,0,0.075);
 }
 #navbar__bottom__links {
@@ -170,7 +170,7 @@ button:hover {
   height: 100%;
   background: #1F2C33;
   grid-row: 3 / 4;
-  box-shadow: 1px -2px 6px 0 rgba(0,0,0,0.125), 
+  box-shadow: 1px -2px 6px 0 rgba(0,0,0,0.125),
               2px -4px 12px 0 rgba(0,0,0,0.075);
 }
 .page__header {
