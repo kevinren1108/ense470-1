@@ -5,7 +5,7 @@
     </div>
     <div class="page__content">
       Username: <input type="text">
-      Password: <input type="text">
+      Password: <input type="password">
       <button class="btn--blue btn--full">Log in</button>
     </div>
   </div>

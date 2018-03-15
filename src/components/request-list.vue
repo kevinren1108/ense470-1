@@ -1,16 +1,16 @@
 <template>
     <div class="page">
         <div>
-            <h1>{{ titel }}</h1>
+            <h1>{{ title }}</h1>
         </div>
         <div class='page__content'>
             <table>
                 <tr>
-                    <td>First request</td>
+                    <td>Request: WTF</td>
                     <td><button class='btn--blue request__button'>view</button></td>
                     <td><button class='btn--blue request__button'>delete</button></td>
                 </tr>
-                <router-link to="/newRequest"><button class='btn--blue btn--full'>New Request</button></router-link>
+                <router-link to="/new-request"><button class='btn--blue btn--full'>New Request</button></router-link>
             </table>
         </div>
     </div>
@@ -18,10 +18,10 @@
 
 <script>
 export default {
-  name: 'signup',
+  name: 'RequestListPage',
   data () {
     return {
-      titel: 'Current Request'
+      title: 'Requests'
     }
   }
 }

@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'signup',
+  name: 'SignupPage',
   data () {
     return {
       title: 'Sign up'

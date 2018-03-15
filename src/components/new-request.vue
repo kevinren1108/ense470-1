@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <div>
-            <h1>{{ titel }}</h1>
+            <h1>{{ title }}</h1>
         </div>
         <div class='page__content'>
             <table>
@@ -28,10 +28,10 @@
 
 <script>
 export default {
-  name: 'signup',
+  name: 'NewRequestPage',
   data () {
     return {
-      titel: 'Make a new Request'
+      title: 'Make a new Request'
     }
   }
 }
