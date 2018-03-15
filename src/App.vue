@@ -8,7 +8,7 @@
       <div id="navbar__bottom">
         <div id="navbar__bottom__links"></div>
         <router-link to="/" class="navbar__bottom__link" id="navbar_home">Home</router-link>
-        <router-link to="/components/currRequest" class="navbar__bottom__link" id="navbar_placeholder">Tickets list</router-link>
+        <router-link to="/currRequest" class="navbar__bottom__link" id="navbar_placeholder">Tickets list</router-link>
       </div>
     </div>
     <div id="body">
