@@ -36,9 +36,8 @@ html, body {
 a {
   text-decoration: inherit;
   color: inherit;
-  transition: all 0.2s ease 0s;
 }
-a:hover {
+.basic-link:hover {
   text-decoration: underline;
 }
 button {

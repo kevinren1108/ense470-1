@@ -9,7 +9,7 @@
           <div id="row-2"><input type="password" class="login__input" id="password" placeholder="Password"/></div>
           <div id="row-3">
             <router-link to="/"><button class="btn--blue btn--large" id="login__submit">Log in</button></router-link>
-            <p>Dont have an account? <a href="/#/signup">Sign up now</a></p>
+            <p>Dont have an account? <a href="/#/signup" class="basic-link">Sign up now</a></p>
           </div>
         </div>
     </div>
