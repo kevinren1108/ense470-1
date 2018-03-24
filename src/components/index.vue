@@ -1,8 +1,5 @@
 <template>
     <div class="page">
-        <div class="side-banner">
-          <h1>Welcome</h1>
-        </div>
         <div class="page__content">
           <h1 class="page__title">Log in</h1>
           <div id="row-1"><input type="text" class="login__input" id="username" placeholder="Username"/></div>
@@ -31,25 +28,10 @@ export default {
 .page {
   padding: 0;
   display: flex;
-  width: 100%;
+  width: 60%;
+  min-width: 500px;
   height: 60%;
   align-items: center;
-}
-.side-banner {
-  height: 100%;
-  width: 25%;
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, #14a9e9 , #0098d8);
-  border-radius: 8px 0 0 8px;
-}
-.side-banner h1 {
-  width: 100%;
-  text-align: center;
-  font-variant: small-caps;
-  font-size: 2.1rem;
-  color: #F2FAFD;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.075);
 }
 .page__content {
   width: 100%;

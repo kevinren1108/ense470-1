@@ -18,10 +18,10 @@
 
 <script>
 export default {
-  name: 'RequestListPage',
+  name: 'SoftwarePage',
   data () {
     return {
-      title: 'Requests'
+      title: 'Software'
     }
   }
 }

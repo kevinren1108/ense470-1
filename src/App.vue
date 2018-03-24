@@ -4,21 +4,21 @@
       <div id="navbar__top">
         <div id="navbar__top__content">
           <div id="navbar__title">Software Procurement Portal</div>
-          <button id="navbar__btn-login" class="btn--green btn--small">Log in</button>
+          <router-link to="/login" id="navbar__btn-login" class="btn btn--green btn--small">Log in</router-link>
         </div>
       </div>
       <div id="navbar__bottom">
         <div id="navbar__bottom__content">
           <div id="navbar__bottom__links"></div>
           <router-link to="/" class="navbar__bottom__link" id="navbar_home">Home</router-link>
-          <router-link to="/request-list" class="navbar__bottom__link" id="navbar_placeholder">Requests</router-link>
+          <router-link to="/software" class="navbar__bottom__link" id="navbar_placeholder">Software</router-link>
         </div>
       </div>
     </div>
     <div id="body">
       <router-view id="content"/>
     </div>
-    <div id="footer"></div>
+    <!-- <div id="footer"></div> -->
   </div>
 </template>
 
@@ -40,7 +40,7 @@ a {
 .basic-link:hover {
   text-decoration: underline;
 }
-button {
+button, .btn {
   transition: all 0.2s ease 0s;
 }
 button:hover {
@@ -99,7 +99,7 @@ button:hover {
   height: 100vh;
 
   display: grid;
-  grid-template-rows: 2fr 11fr 1fr;
+  grid-template-rows: 2fr 12fr;
   grid-template-columns: 2fr 6fr 2fr;
   background: #F4F4F5;
 }
@@ -182,20 +182,23 @@ button:hover {
   padding: 0;
   background: #F4F4F5;
   display: grid;
-  grid-template-rows: 10% 80% 10%;
   grid-template-columns: 24% 52% 24%;
   align-items: center;
 }
 #content {
-  grid-row: 2 / 3;
+  grid-row: 1 / 2;
   grid-column: 2 / 3;
+  padding: 80px 0 0;
   width: 100%;
+  height: 100%;
   box-sizing: border-box;
-  background: #FFFFFF;
-  /* padding: 0; */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* background: #FFFFFF;
   border-radius: 8px;
   box-shadow: 0px 1px 4px 0 rgba(0,0,0,0.1),
-              0px 4px 4px 0 rgba(0,0,0,0.05);
+              0px 4px 4px 0 rgba(0,0,0,0.05); */
 }
 #footer {
   z-index: 101;
