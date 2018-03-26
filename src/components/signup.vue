@@ -2,13 +2,13 @@
   <div class="page">
       <div class="page__content">
         <h1 class="page__title">Sign up</h1>
-        <div id="row-1"><input v-on:change="checkFirstName()" type="text" class="login__input" id="first__name" placeholder="First Name"/><div id="fn__msg"></div></div>
-        <div id="row-2"><input v-on:change="checkLastName()" type="text" class="login__input" id="last__name" placeholder="Last Name"/><div id="ln__msg"></div></div>
-        <div id="row-3"><input v-on:change="checkEmail()" type="text" class="login__input" id="email" placeholder="Email"/><div id="em__msg"></div></div>
-        <div id="row-4"><input v-on:change="checkPassword()" type="password" class="login__input" id="password" placeholder="Password"/><div id="pw__msg"></div></div>
-        <div id="row-5"><input v-on:change="checkVerifyPassward()" type="password" class="login__input" id="verify__password" placeholder="Verify Password"/><div id="vpw__msg"></div></div>
+        <div id="row-1"><input v-on:change="checkFirstName()" type="text" v-model="first__name" class="login__input" id="first__name" placeholder="First Name"/><div id="fn__msg"></div></div>
+        <div id="row-2"><input v-on:change="checkLastName()" type="text" v-model="last__name" class="login__input" id="last__name" placeholder="Last Name"/><div id="ln__msg"></div></div>
+        <div id="row-3"><input v-on:change="checkEmail()" type="text" v-model="email" class="login__input" id="email" placeholder="Email"/><div id="em__msg"></div></div>
+        <div id="row-4"><input v-on:change="checkPassword()" type="password" v-model="password" class="login__input" id="password" placeholder="Password"/><div id="pw__msg"></div></div>
+        <div id="row-5"><input v-on:change="checkVerifyPassward()" type="password" v-model="vf__password" class="login__input" id="verify__password" placeholder="Verify Password"/><div id="vpw__msg"></div></div>
         <div id="row-6">
-          <button v-on:click="validate()" class="btn--blue btn--large" id="signup__submit">Sign up</button>
+          <button v-on:click="validate(); submit__signup"  class="btn--blue btn--large" id="signup__submit">Sign up</button>
           <p>Already have an account? <router-link to="/login" class="basic-link">Log in here</router-link></p>
         </div>
       </div>
@@ -16,14 +16,35 @@
 </template>
 
 <script>
+import AuthenticationServices from '@/services/AuthenticationServices'
 export default {
   name: 'SignupPage',
   data () {
     return {
-      title: 'Sign up'
+      title: 'Sign up',
+      first__name: '',
+      last__name: '',
+      email: '',
+      password: '',
+      vf__password: '',
+      user__status: '0',
+      error: null
     }
   },
   methods: {
+    async submit__signup () {
+      try {
+        await AuthenticationServices.sign__up({
+          first__name: this.first__name,
+          last__name: this.last__name,
+          email: this.email,
+          password: this.password,
+          inv__code: this.inv__code
+        })
+      } catch (error) {
+        this.error = error.response.data.error
+      }
+    },
     validate: function () {
       var firstName = document.getElementById('first__name').value
       var firstErrorMsg = ''
