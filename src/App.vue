@@ -32,6 +32,7 @@ export default {
 html, body {
   padding: 0;
   margin: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 a {
   text-decoration: inherit;
@@ -100,12 +101,12 @@ button:hover {
 
   display: grid;
   grid-template-rows: 2fr 12fr;
-  grid-template-columns: 2fr 6fr 2fr;
+  grid-template-columns: 100%;
   background: #F4F4F5;
 }
 #navbar {
   grid-row: 1 / 2;
-  grid-column: 1 / 4;
+  grid-column: 1 / 2;
   display: flex;
   flex-direction: column;
 }
@@ -134,7 +135,7 @@ button:hover {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.075);
 }
 #navbar__btn-login {
-  margin: 0 20px;
+  /* margin: 0 20px; */
 }
 #navbar__bottom {
   z-index: 100;
@@ -188,7 +189,7 @@ button:hover {
 #content {
   grid-row: 1 / 2;
   grid-column: 2 / 3;
-  padding: 80px 0 0;
+  padding: 60px 0 0;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -211,7 +212,12 @@ button:hover {
               2px -4px 12px 0 rgba(0,0,0,0.075); */
 }
 .page {
-  padding: 20px;
+  padding: 0;
+  min-width: 500px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 .page__header {
   width: 100%;

@@ -1,19 +1,33 @@
 <template>
-    <div class="page">
-        <div>
-            <h1>{{ title }}</h1>
-        </div>
-        <div class='page__content'>
-            <table>
-                <tr>
-                    <td>Request: WTF</td>
-                    <td><button class='btn--blue request__button'>view</button></td>
-                    <td><button class='btn--blue request__button'>delete</button></td>
-                </tr>
-                <router-link to="/new-request"><button class='btn--blue btn--full'>New Request</button></router-link>
-            </table>
-        </div>
+  <div class="page">
+    <div class='page__content'>
+      <div>
+        <span class="page__title-container"><h1 class="page__title">Open Requests</h1></span>
+        <!-- <span class="page__title__btn-container"><button class="btn--green">New Request</button></span> -->
+      </div>
+      <div class="list-container">
+        <ul class="list">
+          <div v-for="(request, index) in requests" :key="request.id">
+            <li class="list__item list__item--request">
+              <span class="list__item__title">{{request.software}}</span>
+              <span class="list__item__status">{{request.status}}</span>
+              <span class="list__item__btn-container"><button class="btn--blue list__item__btn">View</button></span>
+            </li>
+            <hr>
+          </div>
+          <li class="list__btn-container"><button class="btn--green list__btn--full">New Request</button></li>
+        </ul>
+      </div>
+      <!-- <table>
+        <tr>
+          <td>Request: WTF</td>
+          <td><button class='btn--blue request__button'>view</button></td>
+          <td><button class='btn--blue request__button'>delete</button></td>
+        </tr>
+        <router-link to="/new-request"><button class='btn--blue btn--full'>New Request</button></router-link>
+      </table> -->
     </div>
+  </div>
 </template>
 
 <script>
@@ -21,47 +35,117 @@ export default {
   name: 'SoftwarePage',
   data () {
     return {
-      title: 'Software'
+      requests: [
+        {software: 'Operating Map of Gastropathy', status: 'Waiting for Approval', id: 1},
+        {software: 'Relational Observation System Limited', status: 'Approved', id: 2},
+        {software: 'Web Utility Table', status: 'Confirm and Close', id: 3}
+      ]
     }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.page {
+  padding: 0;
+  width: 100%;
+  min-width: 500px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.page__content {
+  width: 100%;
+  /* height: 100%; */
+  /* margin: 0 0 120px; */
+  padding: 0;
+  box-sizing: border-box;
+}
+.page__title {
+  /* padding: 0 0 20px; */
+  margin: 0 5px 14px;
+}
+.page__title-container {
+ width: 70%;
+}
+.page__title__btn-container {
+ width: 30%;
+}
+.list-container {
+  width: 100%;
+  border: 1px solid rgba(74, 84, 90, 0.4);
+  border-radius: 8px;
+  background: #FBFBFB;
+  padding: 6px 6px;
+  box-sizing: border-box;
+}
+.list {
+  margin: 0;
+}
+.list__btn-container {
+  padding: 0 10px;
+}
+.list__btn--full {
+  width: 100%;
+  border-radius: 4px;
+  padding: 17px 32px;
+  margin: 5px 0;
+  box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.1),
+              2px 4px 4px 0 rgba(0,0,0,0.05);
+}
+.list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+.list__item:hover {
+  transition: all 0.2s ease 0s;
+  background: #EEEEEE;
+}
+.list__item__title {
+  width: 40%;
+  text-align: left;
+}
+.list__item__status {
+  width: 40%;
+  text-align: center;
+}
+.list__item__btn-container {
+  width: 20%;
+  text-align: right;
+}
+.list__item__btn {
+  border-radius: 4px;
+  padding: 12px 32px;
+  box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.1),
+              2px 4px 4px 0 rgba(0,0,0,0.05);
+}
+hr {
+  margin: 6px;
+  border: 0;
+  height: 1px;
+  background: rgba(31, 44, 51, 0.1);
+}
 h1, h2, p {
-    text-align: left;
+  text-align: left;
+  padding: 0;
+  margin: 0;
 }
 
 h1, h2 {
-    font-weight: normal;
+  font-weight: normal;
 }
 ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
-
-.request__button{
-    align-items: right;
-}
-
 li {
-    display: inline-block;
-    margin: 0 10px;
+  margin: 0;
 }
 a {
-    color: #42b983;
+  color: #42b983;
 }
-.btn--blue {
-    background-color: #0098DB; /* Green */
-    border: none;
-    border-radius: 4px;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
 </style>

@@ -1,13 +1,7 @@
 <template>
     <div class="page">
         <div class="page__content">
-          <h1 class="page__title">Log in</h1>
-          <div id="row-1"><input type="text" class="login__input" id="username" placeholder="Username"/></div>
-          <div id="row-2"><input type="password" class="login__input" id="password" placeholder="Password"/></div>
-          <div id="row-3">
-            <router-link to="/"><button class="btn--blue btn--large" id="login__submit">Log in</button></router-link>
-            <p>Dont have an account? <a href="/#/signup" class="basic-link">Sign up now</a></p>
-          </div>
+          <h1 class="page__title">Welcome</h1>
         </div>
     </div>
 </template>
