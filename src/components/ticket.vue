@@ -28,7 +28,7 @@
                 <tr>
                     <td><button class='btn--blue btn--full'>Accept</button></td>
                     <td><button class='btn--blue btn--full'>Decline</button></td>
-                </tr>  
+                </tr>
             </table>
         </div>
     </div>
