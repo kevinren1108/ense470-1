@@ -100,7 +100,7 @@ button:hover {
   height: 100vh;
 
   display: grid;
-  grid-template-rows: 2fr 12fr;
+  grid-template-rows: 100px 12fr;
   grid-template-columns: 100%;
   background: #F4F4F5;
 }
@@ -123,7 +123,8 @@ button:hover {
   grid-template-columns: 24% 52% 24%;
 }
 #navbar__top__content {
-  grid-column: 2 / 3;
+  grid-column: 1 / 4;
+  padding: 0 5%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -136,6 +137,7 @@ button:hover {
 }
 #navbar__btn-login {
   /* margin: 0 20px; */
+  padding: 12px 32px;
 }
 #navbar__bottom {
   z-index: 100;
@@ -147,11 +149,12 @@ button:hover {
               2px 4px 12px 0 rgba(0,0,0,0.075); */
 
   display: grid;
-  grid-template-columns: 24% 52% 24%;
+  grid-template-columns: 1fr 52% 1fr;
 }
 #navbar__bottom__content {
   height: 100%;
-  grid-column: 2 / 3;
+  grid-column: 1 / 4;
+  padding: 0 5%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -183,7 +186,7 @@ button:hover {
   padding: 0;
   background: #F4F4F5;
   display: grid;
-  grid-template-columns: 24% 52% 24%;
+  grid-template-columns: 1fr minmax(500px, 52%) 1fr;
   align-items: center;
 }
 #content {
