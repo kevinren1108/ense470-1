@@ -11,24 +11,8 @@
           <button v-on:click="validate()" @click="submit__signup" class="btn--blue btn--large" id="signup__submit">Sign up</button>
           <p>Already have an account? <router-link to="/login" class="basic-link">Log in here</router-link></p>
         </div>
-<<<<<<< HEAD
-        <div>
-            <table>
-                <tr><td>First Name: </td><td> <input type="text" id="first__name" v-model="first__name" size="30" /></td></tr>
-                <tr><td>Last Name: </td><td> <input type="text" id="last__name" v-model="last__name" size="30" /></td></tr>
-                <tr><td>Email: </td><td> <input type="email" id="email" v-model="email" size="30" /></td></tr>
-                <tr><td>Password: </td><td> <input type="password" id="password" v-model="password" size="30" /></td></tr>
-                <tr><td>Verify Password: </td><td> <input type="password" id="vf__password" v-model="vf__password" size="30" /></td></tr>
-                <tr><td>Invitation Code: </td><td> <input type="text" id="inv__code" v-model="inv__code" size="30" /></td></tr>
-            </table>
-
-            <button class="btn--blue btn--full" @click="submit__signup" >Sign up</button>
-        </div>
-    </div>
-=======
       </div>
   </div>
->>>>>>> 85b73977da6d2a808374a334a9b4332323f5ccbe
 </template>
 
 <script>
