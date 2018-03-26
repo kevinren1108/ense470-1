@@ -27,7 +27,7 @@ export default {
       email: '',
       password: '',
       vf__password: '',
-      inv__code: '',
+      user__status: '0',
       error: null
     }
   },
