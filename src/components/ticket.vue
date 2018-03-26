@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <div>
-            <h1>{{ titel }}</h1>
+            <h1>{{ title }}</h1>
         </div>
         <div class='page__content'>
             <table>
@@ -36,10 +36,11 @@
 
 <script>
 export default {
-  name: 'signup',
+  // This page may be unnecessary if we have request details
+  name: 'TicketDetailsPage',
   data () {
     return {
-      titel: 'Approver/ Anaylst Ticket Viewer',
+      title: 'Approver/ Anaylst Ticket Viewer',
       firstname: 'frank',
       lastname: 'James',
       email: 'fj@gmail.com',

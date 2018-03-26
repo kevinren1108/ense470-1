@@ -1,6 +1,6 @@
 # ense470
 
-> A Vue.js project
+> ense470.herokuapp.com
 
 ## Build Setup
 
