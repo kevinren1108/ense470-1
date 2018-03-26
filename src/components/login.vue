@@ -34,9 +34,7 @@ export default {
       } catch (error) {
         this.error = error.response.data.error
       }
-    }
-  },
-  methods: {
+    },
     validate: function () {
       var email = document.getElementById('email').value
       var emErrorMsg = ''
