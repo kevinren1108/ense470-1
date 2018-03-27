@@ -1,9 +1,9 @@
 <template>
   <div class="page">
     <div class='page__content'>
-      <div>
-        <span class="page__title-container"><h1 class="page__title">Open Requests</h1></span>
-        <!-- <span class="page__title__btn-container"><button class="btn--green">New Request</button></span> -->
+      <div class="page__title-container page__title-container--button">
+        <h1 class="page__title">Open Requests</h1>
+        <span class="page__title__btn-container"><button class="btn--green page__title__btn btn--large" @click="$router.push('/new-request')">New Request</button></span>
       </div>
       <div class="list-container">
         <ul class="list">
@@ -11,11 +11,11 @@
             <li class="list__item list__item--request">
               <span class="list__item__title">{{request.software}}</span>
               <span class="list__item__status">{{request.status}}</span>
-              <span class="list__item__btn-container"><button class="btn--blue list__item__btn">View</button></span>
+              <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">View</button></span>
             </li>
             <hr>
           </div>
-          <li class="list__btn-container"><button class="btn--green list__btn--full">New Request</button></li>
+          <!-- <li class="list__btn-container"><button class="btn--green list__btn--full">New Request</button></li> -->
         </ul>
       </div>
       <!-- <table>
@@ -32,7 +32,7 @@
 
 <script>
 export default {
-  name: 'SoftwarePage',
+  name: 'MyRequestsPage',
   data () {
     return {
       requests: [
@@ -61,20 +61,28 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
+.page__title-container--button {
+  width: 100%;
+  margin: 0 0 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .page__title {
   /* padding: 0 0 20px; */
-  margin: 0 0 14px;
+  margin: 0;
 }
-.page__title-container {
- width: 70%;
-}
-.page__title__btn-container {
- width: 30%;
+.page__title__btn {
+  /* margin: 0 16px 0 0; */
+  width: 217px;
+  padding: 16px 24px;
+  border-radius: 4px;
+  white-space: nowrap;
 }
 .list-container {
   width: 100%;
   border: 1px solid rgba(74, 84, 90, 0.4);
-  border-radius: 8px;
+  border-radius: 4px;
   background: #FBFBFB;
   padding: 6px 6px;
   box-sizing: border-box;

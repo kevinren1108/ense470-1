@@ -1,7 +1,9 @@
 <template>
     <div class="page">
         <div class="page__content">
-          <h1 class="page__title">Welcome</h1>
+          <div class="page__title-container">
+            <h1 class="page__title">Welcome</h1>
+          </div>
           <div>
             <p>
               This application is a portal for requesting software.
@@ -103,10 +105,6 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-.page__title {
-  /* padding: 0 0 20px; */
-  margin: 0 0 10px;
-}
 .page__btn-container {
   width: 100%;
 }
@@ -136,7 +134,7 @@ h1, h2, p {
   padding: 0;
   margin: 0;
 }
-h1, h2 {
+h1, h2, h3 {
   font-weight: normal;
 }
 ul {

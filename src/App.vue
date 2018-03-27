@@ -11,7 +11,8 @@
         <div id="navbar__bottom__content">
           <div id="navbar__bottom__links"></div>
           <router-link to="/" class="navbar__bottom__link" :class="{'active-link': this.$route.path === '/'}" id="navbar_home">Home</router-link>
-          <router-link to="/software" class="navbar__bottom__link" :class="{'active-link': this.$route.path === '/software'}" id="navbar_placeholder">Software</router-link>
+          <router-link to="/my-requests" class="navbar__bottom__link" :class="{'active-link': this.$route.path === '/my-requests'}" id="navbar_placeholder">My Requests</router-link>
+          <router-link to="/tickets" class="navbar__bottom__link" :class="{'active-link': this.$route.path === '/tickets'}" id="navbar_placeholder">Tickets</router-link>
         </div>
       </div>
     </div>
@@ -33,6 +34,8 @@ html, body {
   padding: 0;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
+  min-width: 500px;
+  width: auto !important;
 }
 a {
   text-decoration: inherit;
@@ -43,6 +46,7 @@ a {
 }
 button, .btn {
   transition: all 0.2s ease 0s;
+  white-space: nowrap;
 }
 button:hover {
   cursor: pointer;
@@ -130,7 +134,7 @@ button:hover {
   justify-content: space-between;
 }
 #navbar__title {
-  font-size: 2rem;
+  font-size: 1.7rem;
   color: #F2FAFD;
   margin: 0;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.075);
@@ -138,6 +142,8 @@ button:hover {
 #navbar__btn-login {
   /* margin: 0 20px; */
   padding: 12px 32px;
+  max-height: 40px;
+  box-sizing: border-box;
 }
 #navbar__bottom {
   z-index: 100;
@@ -231,6 +237,12 @@ button:hover {
   padding: 0 0 8px;
   margin: 0 0 16px;
   border-bottom: 2px solid rgba(31, 44, 51, 0.1);
+}
+.page__title-container {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  margin: 0 0 11px;
 }
 .page__title {
   /* display: inline-block; */
