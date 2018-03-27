@@ -2,11 +2,11 @@
   <div class="page">
       <div class="page__content">
         <h1 class="page__title">Sign up</h1>
-        <div id="row-1"><input v-on:change="checkFirstName()" type="text" v-model="first__name" class="login__input" id="first__name" placeholder="First Name"/><div id="fn__msg"></div></div>
-        <div id="row-2"><input v-on:change="checkLastName()" type="text" v-model="last__name" class="login__input" id="last__name" placeholder="Last Name"/><div id="ln__msg"></div></div>
-        <div id="row-3"><input v-on:change="checkEmail()" type="text" v-model="email" class="login__input" id="email" placeholder="Email"/><div id="em__msg"></div></div>
+        <div id="row-1"><input type="text" v-model="first__name" class="login__input" id="first__name" placeholder="First Name"/><div id="fn__msg"></div></div>
+        <div id="row-2"><input type="text" v-model="last__name" class="login__input" id="last__name" placeholder="Last Name"/><div id="ln__msg"></div></div>
+        <div id="row-3"><input type="text" v-model="email" class="login__input" id="email" placeholder="Email"/><div id="em__msg"></div></div>
         <div id="row-4"><input type="password" v-model="password" class="login__input" id="password" placeholder="Password"/><div id="pw__msg"></div></div>
-        <div id="row-5"><input v-on:change="checkVerifyPassward()" type="password" v-model="vf__password" class="login__input" id="verify__password" placeholder="Verify Password"/><div id="vpw__msg"></div></div>
+        <div id="row-5"><input type="password" v-model="vf__password" class="login__input" id="verify__password" placeholder="Verify Password"/><div id="vpw__msg"></div></div>
         <div id="row-6">
           <button v-on:click="validate(); submit__signup"  class="btn--blue btn--large" id="signup__submit">Sign up</button>
           <p>Already have an account? <router-link to="/login" class="basic-link">Log in here</router-link></p>
@@ -35,9 +35,8 @@ export default {
     async submit__signup () {
       var isValid = this.validate()
       if (!isValid) {
-        return
-      }
-      else {
+        return 1
+      } else {
         try {
           const response = await AuthenticationServices.sign__up({
             first__name: this.first__name,
@@ -51,44 +50,9 @@ export default {
         } catch (error) {
           this.error = error.response.data.error
         }
-    }
-  },
+      }
+    },
     validate: function () {
-      var firstName = document.getElementById('first__name').value
-      var firstErrorMsg = ''
-      if (firstName.charCodeAt(0) === 32) {
-        firstErrorMsg += 'No leading spaces in first name <br>'
-      }
-      var firstLength = firstName.length - 1
-      if (firstName.charCodeAt(firstLength) === 32) {
-        firstErrorMsg += 'No trailing spaces in first name <br>'
-      }
-      if (firstName.length === 0) {
-        firstErrorMsg += 'You have to enter your first name <br>'
-      }
-      if (firstErrorMsg.length > 0) {
-        document.getElementById('fn__msg').innerHTML = firstErrorMsg
-      } else {
-        document.getElementById('fn__msg').innerHTML = ''
-      }
-      //  last name
-      var lastName = document.getElementById('last__name').value
-      var lastErrorMsg = ''
-      if (lastName.charCodeAt(0) === 32) {
-        lastErrorMsg += 'No leading spaces in last name <br>'
-      }
-      var lastLength = lastName.length - 1
-      if (lastName.charCodeAt(lastLength) === 32) {
-        lastErrorMsg += 'No trailing spaces in last name <br>'
-      }
-      if (lastName.length === 0) {
-        lastErrorMsg += 'You have to enter your last name <br>'
-      }
-      if (lastErrorMsg.length > 0) {
-        document.getElementById('ln__msg').innerHTML = lastErrorMsg
-      } else {
-        document.getElementById('ln__msg').innerHTML = ''
-      }
       // email
       var email = document.getElementById('email').value
       var emErrorMsg = ''
@@ -112,69 +76,9 @@ export default {
       } else {
         document.getElementById('vpw__msg').innerHTML = ''
       }
-      var errorMsg = firstErrorMsg + lastErrorMsg + emErrorMsg + vpwErrorMsg
+      var errorMsg = emErrorMsg + vpwErrorMsg
       if (errorMsg.length > 0) {
         return false
-      }
-    },
-    checkFirstName: function () {
-      var firstName = document.getElementById('first__name').value
-      var errorMsg = ''
-      if (firstName.charCodeAt(0) === 32) {
-        errorMsg += 'No leading spaces in first name <br>'
-      }
-      var firstLength = firstName.length - 1
-      if (firstName.charCodeAt(firstLength) === 32) {
-        errorMsg += 'No trailing spaces in first name <br>'
-      }
-      if (errorMsg.length > 0) {
-        document.getElementById('fn__msg').innerHTML = errorMsg
-      } else {
-        document.getElementById('fn__msg').innerHTML = ''
-      }
-    },
-    checkLastName: function () {
-      var lastName = document.getElementById('last__name').value
-      var errorMsg = ''
-      if (lastName.charCodeAt(0) === 32) {
-        errorMsg += 'No leading spaces in last name <br>'
-      }
-      var lastLength = lastName.length - 1
-      if (lastName.charCodeAt(lastLength) === 32) {
-        errorMsg += 'No trailing spaces in last name <br>'
-      }
-      if (errorMsg.length > 0) {
-        document.getElementById('ln__msg').innerHTML = errorMsg
-      } else {
-        document.getElementById('ln__msg').innerHTML = ''
-      }
-    },
-    checkEmail: function () {
-      var email = document.getElementById('email').value
-      var errorMsg = ''
-      if (!(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
-        errorMsg += 'You have entered an invalid email address'
-      }
-      if (errorMsg.length > 0) {
-        document.getElementById('em__msg').innerHTML = errorMsg
-      } else {
-        document.getElementById('em__msg').innerHTML = ''
-      }
-    },
-    checkVerifyPassward: function () {
-      var verifyPassword = document.getElementById('verify__password').value
-      var password = document.getElementById('password').value
-      var errorMsg = ''
-      if (verifyPassword.length < 8) {
-        errorMsg += 'You have to enter at least 8 characters <br>'
-      }
-      if (verifyPassword !== password) {
-        errorMsg += 'Password need matches'
-      }
-      if (errorMsg.length > 0) {
-        document.getElementById('vpw__msg').innerHTML = errorMsg
-      } else {
-        document.getElementById('vpw__msg').innerHTML = ''
       }
     }
   }
