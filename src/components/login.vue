@@ -2,10 +2,10 @@
   <div class="page">
       <div class="page__content">
         <h1 class="page__title">Log in</h1>
-        <div id="row-1"><input v-on:change="checkEmail()" type="text" class="login__input" id="email" placeholder="Email" v-model: email/><div id="em__msg"></div></div>
-        <div id="row-2"><input v-on:change="checkPassword()" type="password" class="login__input" id="password" placeholder="Password" v-model: password/><div id="pw__msg"></div></div>
+        <div id="row-1"><input v-on:change="checkEmail()" type="text" class="login__input" id="email" placeholder="Email" v-model="email"/><div id="em__msg"></div></div>
+        <div id="row-2"><input v-on:change="checkPassword()" type="password" class="login__input" id="password" placeholder="Password" v-model="password"/><div id="pw__msg"></div></div>
         <div id="row-3">
-          <button v-on:click="validate()" class="btn--blue btn--large" id="login__submit">Log in</button>
+          <button @click="login" class="btn--blue btn--large" id="login__submit">Log in</button>
           <p>Dont have an account? <router-link to="/signup" class="basic-link">Sign up now</router-link></p>
         </div>
       </div>
@@ -25,16 +25,23 @@ export default {
     }
   },
   methods: {
+ 
     async login () {
-      try {
-        const response = await AuthenticationServices.login({
-          email: this.email,
-          password: this.password
-        })
-        this.$store.dispatch('setToken', response.data.token)
-        this.$store.dispatch('setUser', response.data.user)
-      } catch (error) {
-        this.error = error.response.data.error
+      var isValid = this.validate()
+      if (!isValid) {
+        return
+      }
+      else {
+        try {
+          const response = await AuthenticationServices.login({
+            email: this.email,
+            password: this.password
+          })
+          this.$store.dispatch('setToken', response.data.token)
+          this.$store.dispatch('setUser', response.data.user)
+        } catch (error) {
+          this.error = error.response.data.error
+        }
       }
     },
     validate: function () {
@@ -58,6 +65,11 @@ export default {
         document.getElementById('pw__msg').innerHTML = pwErrorMsg
       } else {
         document.getElementById('pw__msg').innerHTML = ''
+      }
+      if (emErrorMsg.length > 0 || pwErrorMsg > 0) {
+        return false
+      } else {
+        return true
       }
     },
     checkEmail: function () {

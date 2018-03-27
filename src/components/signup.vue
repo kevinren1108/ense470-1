@@ -27,26 +27,32 @@ export default {
       email: '',
       password: '',
       vf__password: '',
-      user__status: '0',
+      user__status: '1',
       error: null
     }
   },
   methods: {
     async submit__signup () {
-      try {
-        const response = await AuthenticationServices.sign__up({
-          first__name: this.first__name,
-          last__name: this.last__name,
-          email: this.email,
-          password: this.password,
-          inv__code: this.inv__code
-        })
-        this.$store.dispatch('setToken', response.data.token)
-        this.$store.dispatch('setUser', response.data.user)
-      } catch (error) {
-        this.error = error.response.data.error
+      var isValid = this.validate()
+      if (!isValid) {
+        return
       }
-    },
+      else {
+        try {
+          const response = await AuthenticationServices.sign__up({
+            first__name: this.first__name,
+            last__name: this.last__name,
+            email: this.email,
+            password: this.password,
+            user__status: this.user__status
+          })
+          this.$store.dispatch('setToken', response.data.token)
+          this.$store.dispatch('setUser', response.data.user)
+        } catch (error) {
+          this.error = error.response.data.error
+        }
+    }
+  },
     validate: function () {
       var firstName = document.getElementById('first__name').value
       var firstErrorMsg = ''
