@@ -2,6 +2,21 @@
     <div class="page">
         <div class="page__content">
           <h1 class="page__title">Welcome</h1>
+          <div>
+            <p>
+              This application is a portal for requesting software.
+              If you are an approver, you can manage the requests for
+              your software here as well.
+            </p>
+            <br>
+            <h3>
+              Please login to continue
+            </h3>
+          </div>
+          <div class="page__btn-container">
+            <button class="btn--blue btn--large btn--main" @click="$router.push('/login')">Log in</button>
+            <button class="btn--blue btn--large btn--main" @click="$router.push('/signup')">Sign up</button>
+          </div>
           <!-- <div id="row-1"><input v-on:change="checkEmail()" type="text" class="login__input" id="email" placeholder="Email"/><div id="em__msg"></div></div>
           <div id="row-2"><input v-on:change="checkPassword()" type="password" class="login__input" id="password" placeholder="Password"/><div id="pw__msg"></div></div>
           <div id="row-3">
@@ -85,12 +100,18 @@ export default {
 .page__content {
   width: 100%;
   /* height: 100%; */
-  padding: 40px;
+  padding: 0;
   box-sizing: border-box;
 }
 .page__title {
   /* padding: 0 0 20px; */
   margin: 0 0 10px;
+}
+.page__btn-container {
+  width: 100%;
+}
+.btn--main {
+  width: 35%;
 }
 .login__input {
   width: 100%;
@@ -115,7 +136,6 @@ h1, h2, p {
   padding: 0;
   margin: 0;
 }
-
 h1, h2 {
   font-weight: normal;
 }
@@ -126,8 +146,5 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 </style>

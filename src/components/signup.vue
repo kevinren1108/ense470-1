@@ -5,7 +5,7 @@
         <div id="row-1"><input v-on:change="checkFirstName()" type="text" v-model="first__name" class="login__input" id="first__name" placeholder="First Name"/><div id="fn__msg"></div></div>
         <div id="row-2"><input v-on:change="checkLastName()" type="text" v-model="last__name" class="login__input" id="last__name" placeholder="Last Name"/><div id="ln__msg"></div></div>
         <div id="row-3"><input v-on:change="checkEmail()" type="text" v-model="email" class="login__input" id="email" placeholder="Email"/><div id="em__msg"></div></div>
-        <div id="row-4"><input v-on:change="checkPassword()" type="password" v-model="password" class="login__input" id="password" placeholder="Password"/><div id="pw__msg"></div></div>
+        <div id="row-4"><input type="password" v-model="password" class="login__input" id="password" placeholder="Password"/><div id="pw__msg"></div></div>
         <div id="row-5"><input v-on:change="checkVerifyPassward()" type="password" v-model="vf__password" class="login__input" id="verify__password" placeholder="Verify Password"/><div id="vpw__msg"></div></div>
         <div id="row-6">
           <button v-on:click="validate(); submit__signup"  class="btn--blue btn--large" id="signup__submit">Sign up</button>
@@ -100,23 +100,10 @@ export default {
       } else {
         document.getElementById('em__msg').innerHTML = ''
       }
-      // password
-      var password = document.getElementById('password').value
-      var pwErrorMsg = ''
-      if (password.length < 8) {
-        pwErrorMsg += 'You have to enter at least 8 characters <br> '
-      }
-      if (pwErrorMsg.length > 0) {
-        document.getElementById('pw__msg').innerHTML = pwErrorMsg
-      } else {
-        document.getElementById('pw__msg').innerHTML = ''
-      }
       // verify password
       var verifyPassword = document.getElementById('verify__password').value
+      var password = document.getElementById('password').value
       var vpwErrorMsg = ''
-      if (verifyPassword.length < 8) {
-        vpwErrorMsg += 'You have to enter at least 8 characters <br>'
-      }
       if (verifyPassword !== password) {
         vpwErrorMsg += 'Password need matches <br>'
       }
@@ -125,7 +112,7 @@ export default {
       } else {
         document.getElementById('vpw__msg').innerHTML = ''
       }
-      var errorMsg = firstErrorMsg + lastErrorMsg + emErrorMsg + pwErrorMsg + vpwErrorMsg
+      var errorMsg = firstErrorMsg + lastErrorMsg + emErrorMsg + vpwErrorMsg
       if (errorMsg.length > 0) {
         return false
       }
@@ -174,18 +161,6 @@ export default {
         document.getElementById('em__msg').innerHTML = ''
       }
     },
-    checkPassword: function () {
-      var password = document.getElementById('password').value
-      var errorMsg = ''
-      if (password.length < 8) {
-        errorMsg += 'You have to enter at least 8 characters'
-      }
-      if (errorMsg.length > 0) {
-        document.getElementById('pw__msg').innerHTML = errorMsg
-      } else {
-        document.getElementById('pw__msg').innerHTML = ''
-      }
-    },
     checkVerifyPassward: function () {
       var verifyPassword = document.getElementById('verify__password').value
       var password = document.getElementById('password').value
@@ -208,8 +183,8 @@ export default {
 
 <style scoped>
 #content {
-  padding: 0;
-  align-items: center;
+  /* padding: 0; */
+  /* align-items: center; */
 }
 .page {
   padding: 0;
@@ -222,7 +197,7 @@ export default {
 .page__content {
   width: 500px;
   /* height: 100%; */
-  margin: 0 0 120px;
+  /* margin: 0 0 120px; */
   padding: 0;
   box-sizing: border-box;
 }
