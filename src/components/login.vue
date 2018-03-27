@@ -2,7 +2,7 @@
   <div class="page">
       <div class="page__content">
         <h1 class="page__title">Log in</h1>
-        <div id="row-1"><input v-on:change="checkEmail()" type="text" class="login__input" id="email" placeholder="Email" v-model: email/><div id="em__msg"></div></div>
+        <div id="row-1"><input type="text" class="login__input" id="email" placeholder="Email" v-model: email/><div id="em__msg"></div></div>
         <div id="row-2"><input type="password" class="login__input" id="password" placeholder="Password" v-model: password/><div id="pw__msg"></div></div>
         <div id="row-3">
           <button v-on:click="validate()" class="btn--blue btn--large" id="login__submit">Log in</button>
