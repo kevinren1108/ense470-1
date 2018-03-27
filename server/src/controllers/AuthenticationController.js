@@ -43,8 +43,8 @@ module.exports = {
 
       const isPasswordValid = await user.comparePassword(password) 
       
-      console.log(isPasswordValid)
-      console.log(password, user.password)
+      //console.log(isPasswordValid)
+      //console.log(password, user.password)
       if(!isPasswordValid){
         return res.status(403).send({
           error: 'The login info was incorrect2'
@@ -58,7 +58,7 @@ module.exports = {
  
     } catch (err) {
       res.status(500).send({
-        error: 'An error has occured in trying to login '
+      error: 'An error has occured in trying to login '
       })  
     }
   }

@@ -34,13 +34,15 @@ export default {
   methods: {
     async submit__signup () {
       try {
-        await AuthenticationServices.sign__up({
+        const response = await AuthenticationServices.sign__up({
           first__name: this.first__name,
           last__name: this.last__name,
           email: this.email,
           password: this.password,
           inv__code: this.inv__code
         })
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
       } catch (error) {
         this.error = error.response.data.error
       }
