@@ -37,7 +37,7 @@
 <script>
 export default {
   // This page may be unnecessary if we have request details
-  name: 'TicketDetailsPage',
+  name: 'RequestDetailsPage',
   data () {
     return {
       title: 'Approver/ Anaylst Ticket Viewer',

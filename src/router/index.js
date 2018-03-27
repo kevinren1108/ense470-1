@@ -3,9 +3,9 @@ import Router from 'vue-router'
 import SignupPage from '@/components/signup'
 import LoginPage from '@/components/login'
 import IndexPage from '@/components/index'
-import SoftwarePage from '@/components/software'
+import MyRequestsPage from '@/components/my-requests'
 import NewRequestPage from '@/components/new-request'
-import TicketDetailsPage from '@/components/ticket'
+import RequestDetailsPage from '@/components/request-details'
 
 Vue.use(Router)
 
@@ -27,9 +27,9 @@ export default new Router({
       component: LoginPage
     },
     {
-      path: '/software',
-      name: 'RequestListPage',
-      component: SoftwarePage
+      path: '/my-requests',
+      name: 'MyRequestsPage',
+      component: MyRequestsPage
     },
     {
       path: '/new-request',
@@ -37,9 +37,9 @@ export default new Router({
       component: NewRequestPage
     },
     {
-      path: '/ticket',
-      name: 'TicketDetailsPage',
-      component: TicketDetailsPage
+      path: '/request/:id',
+      name: 'RequestDetailsPage',
+      component: RequestDetailsPage
     }
   ]
 })

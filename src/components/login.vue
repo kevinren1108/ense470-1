@@ -25,13 +25,11 @@ export default {
     }
   },
   methods: {
- 
     async login () {
       var isValid = this.validate()
       if (!isValid) {
-        return
-      }
-      else {
+        return 1
+      } else {
         try {
           const response = await AuthenticationServices.login({
             email: this.email,
