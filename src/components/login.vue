@@ -3,7 +3,7 @@
       <div class="page__content">
         <h1 class="page__title">Log in</h1>
         <div id="row-1"><input v-on:change="checkEmail()" type="text" class="login__input" id="email" placeholder="Email" v-model: email/><div id="em__msg"></div></div>
-        <div id="row-2"><input v-on:change="checkPassword()" type="password" class="login__input" id="password" placeholder="Password" v-model: password/><div id="pw__msg"></div></div>
+        <div id="row-2"><input type="password" class="login__input" id="password" placeholder="Password" v-model: password/><div id="pw__msg"></div></div>
         <div id="row-3">
           <button v-on:click="validate()" class="btn--blue btn--large" id="login__submit">Log in</button>
           <p>Dont have an account? <router-link to="/signup" class="basic-link">Sign up now</router-link></p>
@@ -45,41 +45,6 @@ export default {
         document.getElementById('em__msg').innerHTML = emErrorMsg
       } else {
         document.getElementById('em__msg').innerHTML = ''
-      }
-      // password
-      var password = document.getElementById('password').value
-      var pwErrorMsg = ''
-      if (password.length < 8) {
-        pwErrorMsg += 'You have to enter at least 8 characters <br> '
-      }
-      if (pwErrorMsg.length > 0) {
-        document.getElementById('pw__msg').innerHTML = pwErrorMsg
-      } else {
-        document.getElementById('pw__msg').innerHTML = ''
-      }
-    },
-    checkEmail: function () {
-      var email = document.getElementById('email').value
-      var errorMsg = ''
-      if (!(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
-        errorMsg += 'You have entered an invalid email address'
-      }
-      if (errorMsg.length > 0) {
-        document.getElementById('em__msg').innerHTML = errorMsg
-      } else {
-        document.getElementById('em__msg').innerHTML = ''
-      }
-    },
-    checkPassword: function () {
-      var password = document.getElementById('password').value
-      var errorMsg = ''
-      if (password.length < 8) {
-        errorMsg += 'You have to enter at least 8 characters'
-      }
-      if (errorMsg.length > 0) {
-        document.getElementById('pw__msg').innerHTML = errorMsg
-      } else {
-        document.getElementById('pw__msg').innerHTML = ''
       }
     }
   }
