@@ -4,7 +4,8 @@
       <div id="navbar__top">
         <div id="navbar__top__content">
           <div id="navbar__title">Software Procurement Portal</div>
-          <router-link to="/login" id="navbar__btn-login" class="btn btn--green btn--small">Log in</router-link>
+          <router-link v-if="!$store.state.isUserLoggedIn" to="/login" id="navbar__btn-login" class="btn btn--green btn--small">Log in</router-link>
+          <button v-if="$store.state.isUserLoggedIn" @click="logout" id="navbar__btn-logout" class="btn btn--green btn--small">Log out</button>
         </div>
       </div>
       <div id="navbar__bottom">
@@ -24,7 +25,17 @@
 
 <script>
 export default {
-  name: 'App'
+  name:  'App',
+  methods: {
+    logout () {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      this.$router.push({
+        name:'index'
+      })
+    }
+  }
+
 }
 </script>
 
@@ -136,6 +147,10 @@ button:hover {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.075);
 }
 #navbar__btn-login {
+  /* margin: 0 20px; */
+  padding: 12px 32px;
+}
+#navbar__btn-logout {
   /* margin: 0 20px; */
   padding: 12px 32px;
 }

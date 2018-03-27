@@ -9,7 +9,7 @@
     "clean": "rimraf dist/*",
     "build": "node build/build.js",
     "postinstall": "npm run clean && npm run build",
-    "start": "node server.js",
+    "start": "node server/src/app.js",
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
