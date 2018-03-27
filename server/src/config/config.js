@@ -9,7 +9,7 @@ module.exports = {
     options: {
       dialect: process.env.DIALECT || 'sqlite',
       host: process.env.HOST || 'localhost',
-      storage: './ense470.sqlite',
+      // storage: './ense470.sqlite',
       operatorsAliases: Op
     }
   },
