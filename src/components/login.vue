@@ -2,13 +2,8 @@
   <div class="page">
       <div class="page__content">
         <h1 class="page__title">Log in</h1>
-<<<<<<< HEAD
         <div id="row-1"><input v-on:change="checkEmail()" type="text" class="login__input" id="email" placeholder="Email" v-model="email"/><div id="em__msg"></div></div>
         <div id="row-2"><input v-on:change="checkPassword()" type="password" class="login__input" id="password" placeholder="Password" v-model="password"/><div id="pw__msg"></div></div>
-=======
-        <div id="row-1"><input type="text" class="login__input" id="email" placeholder="Email" v-model: email/><div id="em__msg"></div></div>
-        <div id="row-2"><input type="password" class="login__input" id="password" placeholder="Password" v-model: password/><div id="pw__msg"></div></div>
->>>>>>> de48dab8c43f4d3c40c6f15f96a759a4836c4c82
         <div id="row-3">
           <button @click="login" class="btn--blue btn--large" id="login__submit">Log in</button>
           <p>Dont have an account? <router-link to="/signup" class="basic-link">Sign up now</router-link></p>
@@ -60,7 +55,6 @@ export default {
       } else {
         document.getElementById('em__msg').innerHTML = ''
       }
-<<<<<<< HEAD
       // password
       var password = document.getElementById('password').value
       var pwErrorMsg = ''
@@ -101,8 +95,6 @@ export default {
       } else {
         document.getElementById('pw__msg').innerHTML = ''
       }
-=======
->>>>>>> de48dab8c43f4d3c40c6f15f96a759a4836c4c82
     }
   }
 }
