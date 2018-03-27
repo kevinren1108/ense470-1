@@ -7,7 +7,7 @@
       </div>
       <div class="list-container">
         <ul class="list">
-          <div v-for="(request, index) in requests" :key="request.id">
+          <div v-for="(request) in requests" :key="request.id">
             <li class="list__item list__item--request">
               <span class="list__item__title">{{request.software}}</span>
               <span class="list__item__status">{{request.status}}</span>

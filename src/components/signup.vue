@@ -8,7 +8,7 @@
         <div id="row-4"><input type="password" v-model="password" class="login__input" id="password" placeholder="Password"/><div id="pw__msg"></div></div>
         <div id="row-5"><input v-on:change="checkVerifyPassward()" type="password" v-model="vf__password" class="login__input" id="verify__password" placeholder="Verify Password"/><div id="vpw__msg"></div></div>
         <div id="row-6">
-          <button v-on:click="validate(); submit__signup"  class="btn--blue btn--large" id="signup__submit">Sign up</button>
+          <button v-on:click="validate(); submit__signup();"  class="btn--blue btn--large" id="signup__submit">Sign up</button>
           <p>Already have an account? <router-link to="/login" class="basic-link">Log in here</router-link></p>
         </div>
       </div>
