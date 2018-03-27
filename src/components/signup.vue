@@ -200,8 +200,8 @@ export default {
 
 <style scoped>
 #content {
-  padding: 0;
-  align-items: center;
+  /* padding: 0; */
+  /* align-items: center; */
 }
 .page {
   padding: 0;
@@ -214,7 +214,7 @@ export default {
 .page__content {
   width: 500px;
   /* height: 100%; */
-  margin: 0 0 120px;
+  /* margin: 0 0 120px; */
   padding: 0;
   box-sizing: border-box;
 }

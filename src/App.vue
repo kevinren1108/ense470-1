@@ -10,8 +10,8 @@
       <div id="navbar__bottom">
         <div id="navbar__bottom__content">
           <div id="navbar__bottom__links"></div>
-          <router-link to="/" class="navbar__bottom__link" id="navbar_home">Home</router-link>
-          <router-link to="/software" class="navbar__bottom__link" id="navbar_placeholder">Software</router-link>
+          <router-link to="/" class="navbar__bottom__link" :class="{'active-link': this.$route.path === '/'}" id="navbar_home">Home</router-link>
+          <router-link to="/software" class="navbar__bottom__link" :class="{'active-link': this.$route.path === '/software'}" id="navbar_placeholder">Software</router-link>
         </div>
       </div>
     </div>
@@ -168,6 +168,10 @@ button:hover {
   display: flex;
   align-items: center;
   transition: all 0.2s ease 0s;
+}
+.active-link {
+  color: #0098d8;
+  background: #F4F4F5;
 }
 .navbar__bottom__link:hover {
   color: #0098d8;
