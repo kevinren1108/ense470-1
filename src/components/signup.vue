@@ -4,9 +4,9 @@
         <div class="page__title-container">
           <h1 class="page__title">Sign up</h1>
         </div>
-        <div id="row-1"><input v-on:change="checkFirstName()" type="text" v-model="first__name" class="login__input" id="first__name" placeholder="First Name"/><div id="fn__msg"></div></div>
-        <div id="row-2"><input v-on:change="checkLastName()" type="text" v-model="last__name" class="login__input" id="last__name" placeholder="Last Name"/><div id="ln__msg"></div></div>
-        <div id="row-3"><input v-on:change="checkEmail()" type="text" v-model="email" class="login__input" id="email" placeholder="Email"/><div id="em__msg"></div></div>
+        <div id="row-1"><input  type="text" v-model="first__name" class="login__input" id="first__name" placeholder="First Name"/><div id="fn__msg"></div></div>
+        <div id="row-2"><input  type="text" v-model="last__name" class="login__input" id="last__name" placeholder="Last Name"/><div id="ln__msg"></div></div>
+        <div id="row-3"><input  type="text" v-model="email" class="login__input" id="email" placeholder="Email"/><div id="em__msg"></div></div>
         <div id="row-4"><input type="password" v-model="password" class="login__input" id="password" placeholder="Password"/><div id="pw__msg"></div></div>
         <div id="row-5"><input type="password" v-model="vf__password" class="login__input" id="verify__password" placeholder="Verify Password"/><div id="vpw__msg"></div></div>
         <div id="row-6">
@@ -37,7 +37,8 @@ export default {
     async submit__signup () {
       var isValid = this.validate()
       if (!isValid) {
-        return }
+        return
+      }
       else {
         try {
           const response = await AuthenticationServices.sign__up({
