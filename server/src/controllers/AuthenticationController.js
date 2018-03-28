@@ -12,7 +12,7 @@ function jwtSignUser (user){
 module.exports = {
   async signup (req, res) {
     try {
-      const user = await User.create(req.body)  
+      const user = await User.create(req.body)
       const userJson = user.toJSON()
       res.send({
         user: userJson,
@@ -22,21 +22,19 @@ module.exports = {
     } catch (err) {
       res.status(400).send({
         error: 'this email account(and or) invite code are already in use'
-      })  
+      })
     }
-  }, 
+  },
   async login (req, res) {
     try {
       const {email, password} = req.body
       const user = await User.findOne({
         where: {
           email: email
-        }  
-      })  
-     
+        }
+      })
       if(!user){
         return res.status(403).send({
-          
           error: 'The login info was incorrect1'
         })
       }

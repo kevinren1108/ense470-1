@@ -7,9 +7,10 @@ module.exports = {
     user: process.env.DB_USER || 'ense470',
     password: process.env.DB_PASS || 'ense470',
     options: {
-      dialect: process.env.DIALECT || 'sqlite',
+      dialect: process.env.DIALECT || 'postgres', //was sqlite
       host: process.env.HOST || 'localhost',
-      storage: './ense470.sqlite',
+      //storage: './ense470.sequelize',
+      storage: 'sequelize',
       operatorsAliases: Op
     }
   },

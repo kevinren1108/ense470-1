@@ -37,8 +37,8 @@ export default {
     async submit__signup () {
       var isValid = this.validate()
       if (!isValid) {
-        return
-      } else {
+        return }
+      else {
         try {
           const response = await AuthenticationServices.sign__up({
             first__name: this.first__name,
