@@ -29,7 +29,7 @@ export default {
       email: '',
       password: '',
       vf__password: '',
-      user__Status: '1',
+      account__type: '0',
       error: null
     }
   },
@@ -45,12 +45,11 @@ export default {
             last__name: this.last__name,
             email: this.email,
             password: this.password,
-            user__Status: this.user__Status
+            account__type: this.account__type
           })
           this.$store.dispatch('login', response.data.user, response.data.token)
             .then(response => this.$router.push('/'))
         } catch (error) {
-          console.log("heck", error)
           this.error = error.response.data.error
         }
       }

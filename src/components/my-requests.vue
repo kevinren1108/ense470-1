@@ -9,8 +9,8 @@
         <ul class="list">
           <div v-for="request in requests" :key="request.id">
             <li class="list__item list__item--request">
-              <span class="list__item__title">{{request.software}}</span>
-              <span class="list__item__status">{{request.status}}</span>
+              <span class="list__item__title">{{request.software_requested}}</span>
+              <span class="list__item__status">{{request.approval_status}}</span>
               <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">View</button></span>
             </li>
             <hr>
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import TicketService from '@/services/TicketService'
 export default {
   name: 'MyRequestsPage',
   data () {
@@ -42,7 +43,8 @@ export default {
       //]
     }
   },
-  mounted() {
+  async mounted() {
+    this.requests = (await TicketService.GetAllTickets()).data
     //do a request to the backend for all the tickets
   }
 }
