@@ -19,6 +19,12 @@ module.exports = (app) => {
   app.post('/createNewTicket',
   TicketController.createNewTicket)
 
+  app.post('/approveTicket',
+  TicketController.approveTicket)
+
+  app.post('/denyTicket',
+  TicketController.denyTicket)
+
   app.get('/getAllSoftware',
   SoftwareListController.getAllSoftware)
 

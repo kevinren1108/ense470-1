@@ -9,5 +9,11 @@ export default {
   },
   CreateNewTicket (credentials) {
     return Api().post('createNewTicket', credentials)
+  },
+  ApproveTicket (ticketId) {
+    return Api().post('approveTicket', { TicketId: ticketId })
+  },
+  DenyTicket (ticketId) {
+    return Api().post('denyTicket', { TicketId: ticketId })
   }
 }

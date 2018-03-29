@@ -19,8 +19,8 @@
                         <span v-if="ticket.approval_status != 'Pending'">Activate code: {{activate_code}}</span>
                         <hr v-if="ticket.approval_status != 'Pending'">
                         <template v-if="$store.state.user.account__type === 1">
-                                <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + tickets.id)">Approve</button></span>
-                                <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + tickets.id)">Deny</button></span>
+                                <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="approve">Approve</button></span>
+                                <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="deny">Deny</button></span>
                         </template>
                       </div>
                     </div>
@@ -47,16 +47,36 @@ export default {
     // do a request to the backend for all the tickets
   },
   async decision () {
+    try {
+      const response = await AuthenticationServices.decision({
+        id: this.id,
+        new_state: this.new_state
+      })
+      this.$store.dispatch('login', {user: response.data.user, token: response.data.token})
+        .then(() => this.$router.push('/'))
+    } catch (error) {
+      this.error = error
+    }
+  },
+  methods: {
+    async approve () {
       try {
-          const response = await AuthenticationServices.decision({
-            id: this.id,
-            new_state: this.new_state
-          })
-          this.$store.dispatch('login', {user: response.data.user, token: response.data.token})
-            .then(() => this.$router.push('/'))
-        } catch (error) {
-          this.error = error
-        }
+        const response = await TicketService.ApproveTicket(
+          parseInt(this.$route.params.id)
+        ).then(() => this.$router.push('/my-requests'))
+      } catch (err) {
+        this.error = err
+      }
+    },
+    async deny () {
+      try {
+        const response = await TicketService.DenyTicket(
+          parseInt(this.$route.params.id)
+        ).then(() => this.$router.push('/my-requests'))
+      } catch (err) {
+        this.error = err
+      }
+    }
   }
 }
 </script>
