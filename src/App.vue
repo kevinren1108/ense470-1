@@ -4,7 +4,7 @@
       <div id="navbar__top">
         <div id="navbar__top__content">
           <div id="navbar__title">Software Procurement Portal</div>
-          <div> 
+          <div>
             <span v-if="this.$store.state.isUserLoggedIn" id="navbar__user-name">Hello {{$store.state.user.first__name}}</span>
           </div>
           <button v-if="this.$store.state.isUserLoggedIn" @click="logout" id="navbar__btn-logout" class="btn btn--green btn--small">Log out</button>
