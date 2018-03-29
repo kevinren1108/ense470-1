@@ -4,8 +4,8 @@
       <div id="navbar__top">
         <div id="navbar__top__content">
           <div id="navbar__title">Software Procurement Portal</div>
-          <router-link v-if="!$store.state.isUserLoggedIn" to="/login" id="navbar__btn-login" class="btn btn--green btn--small">Log in</router-link>
-          <button v-if="$store.state.isUserLoggedIn" @click="logout" id="navbar__btn-logout" class="btn btn--green btn--small">Log out</button>
+          <button v-if="this.$store.state.isUserLoggedIn" @click="logout" id="navbar__btn-logout" class="btn btn--green btn--small">Log out</button>
+          <router-link v-else to="/login" id="navbar__btn-login" class="btn btn--green btn--small">Log in</router-link>
         </div>
       </div>
       <div id="navbar__bottom">
@@ -29,11 +29,8 @@ export default {
   name: 'App',
   methods: {
     logout () {
-      this.$store.dispatch('setToken', null)
-      this.$store.dispatch('setUser', null)
-      this.$router.push({
-        name: 'index'
-      })
+      this.$store.dispatch('logout')
+        .then(() => this.$router.push('/'))
     }
   }
 
