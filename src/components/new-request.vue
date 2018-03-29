@@ -43,7 +43,25 @@ export default {
         }
       }
       return thismatches
+    },
+    async signup () {
+    var isValid = this.validate()
+    if (!isValid) {
+      return 1
+    } else {
+      try {
+        await AuthenticationServices.sign__up({
+          approval_status: this.first__name,
+          software_ID: this.last__name,
+          email: this.email,
+          password: this.password,
+          account__type: this.account__type
+        })
+      } catch (error) {
+        this.error = error
+      }
     }
+   },
   },
   watch: {
     query: function(val) {

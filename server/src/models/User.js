@@ -46,8 +46,12 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = (models) =>  {
     User.hasMany(models.Ticket, {
       forignKey: "UserId"
+    }),
+    User.hasOne(models.ApproverList, {
+      forignKey: "ApproverId"
     })
   }
+
 
   User.prototype.comparePassword = function (password) {
     //return true

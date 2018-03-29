@@ -17,9 +17,10 @@ module.exports = {
     try{
       const ticket = await Ticket.create(req.body)
     }catch (err){
-      res.status(500).send({
-          error: 'An error has occured while creating a ticket'
-      })
+      console.log(err)
+      //res.status(500).send({
+      //    error: 'An error has occured while creating a ticket'
+      //})
       }
     }
 }

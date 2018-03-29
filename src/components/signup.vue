@@ -46,6 +46,8 @@ export default {
             email: this.email,
             password: this.password,
             account__type: this.account__type
+            
+
           })
           this.$store.dispatch('login', {user: response.data.user, token: response.data.token})
             .then(response => this.$router.push('/'))
