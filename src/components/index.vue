@@ -31,12 +31,12 @@
               </div>
               <div class="list-container">
                 <ul class="list">
-                  <div v-for="item in software" :key="item.id">
-                    <li class="list__item list__item--request">
-                      <span class="list__item__title">{{item.name}}</span>
-                      <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + item.id)">View</button></span>
+                  <div v-for="request in requests" :key="request.id">
+                    <li v-if="request.approval_status === 'Approve' && request.UserId ===  $store.state.user.id" class="list__item list__item--request">
+                      <span class="list__item__title">{{request.id}}</span>
+                      <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">View</button></span>
                     </li>
-                    <hr>
+                    <hr v-if="request.approval_status === 'Approve' && request.UserId ===  $store.state.user.id" >
                   </div>
                 </ul>
               </div>
@@ -53,28 +53,22 @@ export default {
   data () {
     return {
       description: 'This is a portal for requesting access to any software you may need. Please log in to continue.',
+      requests: null,
       software: [
         {
-          name: 'Generic Software 1',
+          name: 'Lab Information System ',
           id: 1
         },
         {
-          name: 'Unique Software',
+          name: 'Chronic Disease Management',
           id: 2
         }
       ]
     }
   },
-  methods: {
-    async mounted () {
-      try {
-        this.software = (await TicketService.GetApprovedTickets({
-          user_id: this.$store.state.user.id
-        })).data
-      } catch (err) {
-        console.log (err)
-      }
-    },
+  async mounted () {
+    this.requests = (await TicketService.GetAllTickets()).data
+    // do a request to the backend for all the tickets
   }
 }
 </script>
