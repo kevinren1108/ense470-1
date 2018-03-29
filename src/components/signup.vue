@@ -29,7 +29,7 @@ export default {
       email: '',
       password: '',
       vf__password: '',
-      user__status: '1',
+      user__Status: '1',
       error: null
     }
   },
@@ -45,11 +45,13 @@ export default {
             last__name: this.last__name,
             email: this.email,
             password: this.password,
-            user__status: this.user__status
+            user__Status: this.user__Status
           })
+          console.log(response)
           this.$store.dispatch('setToken', response.data.token)
           this.$store.dispatch('setUser', response.data.user)
         } catch (error) {
+          console.log("heck", error)
           this.error = error.response.data.error
         }
       }

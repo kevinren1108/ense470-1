@@ -8,7 +8,7 @@ module.exports = {
       last__name: Joi.string().regex(/^[a-zA-Z]{3,30}$/),
       email: Joi.string().email(),
       password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/),
-      inv__code: [Joi.string(), Joi.number()]
+      user__Status: [Joi.string(), Joi.number()]
     }
   const{error, value} = Joi.validate(req.body, schema)
 
@@ -49,7 +49,7 @@ module.exports = {
           `
         })
         break
-      case 'inv__code:':
+      case 'user__Status:':
         res.status(400).send({
           error: `The invitation code to match the following rules:
           <br>
