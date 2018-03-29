@@ -13,8 +13,8 @@
       </div>
     </div>
     <div class="page__btn-container">
-      <button class="btn btn--blue btn--large btn--main">Cancel</button>
-      <button class="btn btn--blue btn--large btn--main">Request</button>
+      <button @click="$router.push('/my-requests')" class="btn btn--blue btn--large btn--main">Cancel</button>
+      <button @click="newRequest" class="btn btn--blue btn--large btn--main">Request</button>
     </div>
   </div>
   </div>
@@ -56,6 +56,18 @@ export default {
     resultSelect: function(result) {
       this.query = result
       this.selected = true
+    },
+    async newRequest () {   
+      try {
+        console.log(this.query)
+        const response = await AuthenticationServices.sign__up({
+          newRequest: this.query,
+        })
+        this.$store.dispatch('login', {user: response.data.user, token: response.data.token})
+          .then(response => this.$router.push('/'))
+      } catch (error) {
+        this.error = error
+      }
     }
   }
 }
