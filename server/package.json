@@ -11,6 +11,7 @@
   "author": "Jeff Redmond jeffred1234@gmail.com",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "eslint": "^4.19.1",
@@ -19,6 +20,7 @@
     "morgan": "^1.9.0",
     "nmp": "^1.0.3",
     "nodemon": "^1.17.2",
+    "pg": "^7.4.1",
     "sequelize": "^4.37.4",
     "sqlite3": "^3.1.13"
   },

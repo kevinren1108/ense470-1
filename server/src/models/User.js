@@ -17,11 +17,11 @@ function hashPassword(user, options) {
 
 
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('user', {
+  const User = sequelize.define("User", {
     id:{
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true 
+      autoIncrement: true
     },
     first__name: DataTypes.STRING,
     last__name:  DataTypes.STRING,
@@ -29,14 +29,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       unique: true
     },
-    password: DataTypes.STRING, 
+    password: DataTypes.STRING,
     user__Status:{
       type: DataTypes.STRING,
       unique: false
-    } 
+    }
   }, {
     hooks: {
-      //beforeCreate: hashPassword, dont use these: they break the program 
+      //beforeCreate: hashPassword, dont use these: they break the program
       //beforeUpdate: hashPassword,
       beforeSave: hashPassword
     }
