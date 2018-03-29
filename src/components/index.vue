@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import TicketService from '@/services/TicketService'
 export default {
   name: 'index',
   data () {
@@ -65,6 +66,15 @@ export default {
     }
   },
   methods: {
+    async mounted () {
+      try {
+        this.software = (await TicketService.GetApprovedTickets({
+          user_id: this.$store.state.user.id
+        })).data
+      } catch (err) {
+        console.log (err)
+      }
+    },
   }
 }
 </script>

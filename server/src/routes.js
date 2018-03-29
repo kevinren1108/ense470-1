@@ -22,6 +22,9 @@ module.exports = (app) => {
   app.get('/getAllSoftware',
   SoftwareListController.getAllSoftware)
 
+  app.get('/getApprovedTickets',
+  TicketController.getApprovedTickets)
+
   app.post('/createNewSoftware',
   SoftwareListController.createNewSoftware)
 
