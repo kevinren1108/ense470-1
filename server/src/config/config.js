@@ -8,7 +8,7 @@ module.exports = {
     password: process.env.DB_PASS || 'ense470',
     options: {
       dialect: process.env.DIALECT || 'postgres',
-      host: process.env.HOST || 'localhost',
+      host: process.env.DB_HOST || 'localhost',
       // storage: './ense470.sqlite',
       operatorsAliases: Op
     }

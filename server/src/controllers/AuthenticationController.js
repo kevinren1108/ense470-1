@@ -1,4 +1,4 @@
-const {user} = require('../models')
+const {User} = require('../models')
 const jwt = require('jsonwebtoken')
 const config = require('../config/config')
 
@@ -12,7 +12,7 @@ function jwtSignUser (user){
 module.exports = {
   async signup (req, res) {
     try {
-      const user = await user.create(req.body)
+      const user = await User.create(req.body)
       const userJson = user.toJSON()
       res.send({
         user: userJson,
@@ -29,18 +29,21 @@ module.exports = {
   async login (req, res) {
     try {
       const {email, password} = req.body
-      const user = await user.findOne({
+      const user = await User.findOne({
         where: {
           email: email
         }
       })
+
       if(!user){
         return res.status(403).send({
+
           error: 'The login info was incorrect1'
         })
       }
 
       const isPasswordValid = await user.comparePassword(password)
+
       //console.log(isPasswordValid)
       //console.log(password, user.password)
       if(!isPasswordValid){
@@ -54,9 +57,10 @@ module.exports = {
         token: jwtSignUser(userJson)
       })
     } catch (err) {
-      res.status(500).send({
-      error: 'An error has occured in trying to login '
-      })
+      console.log("now whats the problem", err)
+      //res.status(500).send({
+      //error: 'An error has occured in trying to login '
+      //})
     }
   }
 }
