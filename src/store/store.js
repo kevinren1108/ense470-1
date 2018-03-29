@@ -11,20 +11,27 @@ export default new Vuex.Store({
     isUserLoggedIn: false
   },
   mutations: {
-    login(state, user, token) {
-      if (token) {
-        state.user = user
-        state.token = token
+    login(state, payload) {
+      if (payload.token) {
+        state.user = payload.user
+        state.token = payload.token
         state.isUserLoggedIn = true
-      }
-      else {
+      } else {
         state.isUserLoggedIn = false
       }
+    },
+    logout(state) {
+      state.user = null
+      state.token = null
+      state.isUserLoggedIn = false
     }
   },
   actions: {
-    login ({commit}, user, token) {
-      commit('login', user, token)
+    login ({commit}, payload) {
+      commit('login', payload)
+    },
+    logout({commit}) {
+      commit('logout')
     }
   }
 })

@@ -4,8 +4,11 @@
       <div id="navbar__top">
         <div id="navbar__top__content">
           <div id="navbar__title">Software Procurement Portal</div>
-          <router-link v-if="!$store.state.isUserLoggedIn" to="/login" id="navbar__btn-login" class="btn btn--green btn--small">Log in</router-link>
-          <button v-if="$store.state.isUserLoggedIn" @click="logout" id="navbar__btn-logout" class="btn btn--green btn--small">Log out</button>
+          <div> 
+            <span v-if="this.$store.state.isUserLoggedIn" id="navbar__user-name">Hello {{$store.state.user.first__name}}</span>
+          </div>
+          <button v-if="this.$store.state.isUserLoggedIn" @click="logout" id="navbar__btn-logout" class="btn btn--green btn--small">Log out</button>
+          <router-link v-else to="/login" id="navbar__btn-login" class="btn btn--green btn--small">Log in</router-link>
         </div>
       </div>
       <div id="navbar__bottom">
@@ -29,11 +32,8 @@ export default {
   name: 'App',
   methods: {
     logout () {
-      this.$store.dispatch('setToken', null)
-      this.$store.dispatch('setUser', null)
-      this.$router.push({
-        name: 'index'
-      })
+      this.$store.dispatch('logout')
+        .then(() => this.$router.push('/'))
     }
   }
 
@@ -50,6 +50,7 @@ html, body {
 }
 a {
   text-decoration: inherit;
+  font-size: inherit;
   color: inherit;
 }
 .basic-link:hover {
@@ -58,6 +59,7 @@ a {
 button, .btn {
   transition: all 0.2s ease 0s;
   white-space: nowrap;
+  font: inherit;
 }
 button:hover {
   cursor: pointer;
@@ -154,11 +156,15 @@ button:hover {
   /* margin: 0 20px; */
   padding: 12px 32px;
   max-height: 40px;
+  width: 120px;
   box-sizing: border-box;
 }
 #navbar__btn-logout {
   /* margin: 0 20px; */
   padding: 12px 32px;
+  max-height: 40px;
+  width: 120px;
+  box-sizing: border-box;
 }
 #navbar__bottom {
   z-index: 100;
@@ -189,6 +195,9 @@ button:hover {
   display: flex;
   align-items: center;
   transition: all 0.2s ease 0s;
+}
+#navbar__user-name{
+  color: #F4F4F5;
 }
 .active-link {
   color: #0098d8;

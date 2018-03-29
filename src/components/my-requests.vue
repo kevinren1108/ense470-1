@@ -15,17 +15,8 @@
             </li>
             <hr>
           </div>
-          <!-- <li class="list__btn-container"><button class="btn--green list__btn--full">New Request</button></li> -->
         </ul>
       </div>
-      <!-- <table>
-        <tr>
-          <td>Request: WTF</td>
-          <td><button class='btn--blue request__button'>view</button></td>
-          <td><button class='btn--blue request__button'>delete</button></td>
-        </tr>
-        <router-link to="/new-request"><button class='btn--blue btn--full'>New Request</button></router-link>
-      </table> -->
     </div>
   </div>
 </template>
@@ -36,11 +27,12 @@ export default {
   name: 'MyRequestsPage',
   data () {
     return {
-      requests: null //[
+      requests: null 
+        //[
         //{software: 'Operating Map of Gastropathy', status: 'Waiting for Approval', id: 1},
         //{software: 'Relational Observation System Limited', status: 'Approved', id: 2},
         //{software: 'Web Utility Table', status: 'Confirm and Close', id: 3}
-      //]
+        //]
     }
   },
   async mounted() {

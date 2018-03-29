@@ -47,10 +47,10 @@ export default {
             password: this.password,
             account__type: this.account__type
           })
-          this.$store.dispatch('login', response.data.user, response.data.token)
+          this.$store.dispatch('login', {user: response.data.user, token: response.data.token})
             .then(response => this.$router.push('/'))
         } catch (error) {
-          this.error = error.response.data.error
+          this.error = error
         }
       }
     },
