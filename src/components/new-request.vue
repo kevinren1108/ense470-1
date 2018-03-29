@@ -13,8 +13,13 @@
       </div>
     </div>
     <div class="page__btn-container">
+<<<<<<< HEAD
       <button class="btn btn--blue btn--large btn--main">Cancel</button>
       <button  @click="submitNewRequest" class="btn btn--blue btn--large btn--main">Request</button>
+=======
+      <button @click="$router.push('/my-requests')" class="btn btn--blue btn--large btn--main">Cancel</button>
+      <button class="btn btn--blue btn--large btn--main">Request</button>
+>>>>>>> fd1e19e15cdad92108e80439b1cc185ff07cadc0
     </div>
   </div>
   </div>
