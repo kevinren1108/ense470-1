@@ -1,25 +1,23 @@
 <template>
     <div class="page">
-        <div class='page__content'>
+        <div v-if="this.$store.state.isUserLoggedIn" class='page__content'>
             <div class="page__title-container page__title-container--button">
                 <h1 class="page__title">Ticket</h1>
             </div>
             <div v-if="this.$store.state.isUserLoggedIn" class="list-container">
                 <ul class="list">
                     <div v-for="ticket in tickets" :key="ticket.id">
-                      <div><span>Requested by: {{ticket.firstname}}</span></div>
+                      <span>Requested by: {{ticket.firstname}}</span>
                       <hr>
-                      <div><span>Approve by: {{ticket.approver}}</span></div>
+                      <span>Approve by: {{ticket.approver}}</span>
                       <hr>
-                      <div><span>Opened at: {{ticket.opened}}</span></div>
+                      <span>Opened at: {{ticket.opened}}</span>
                       <hr>
-                      <div><span>Last Updated at: {{ticket.lastUpdated}}</span></div>
+                      <span>Last Updated at: {{ticket.lastUpdated}}</span>
                       <hr>
                       <template v-if="$store.state.user.account__type === 1">
-                        <div>
                             <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Accept</button></span>
                             <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Decline</button></span>
-                        </div>
                       </template>
                     </div>
                 </ul>
