@@ -16,9 +16,9 @@
                       <div><span>Last Updated at: {{ticket.lastUpdated}}</span></div>
                       <hr>
                       <template v-if="$store.state.user.account__type === 1">
-                        <div>                        
+                        <div>
                             <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Accept</button></span>
-                            <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Decline</button></span>             
+                            <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Decline</button></span>
                         </div>
                       </template>
                     </div>
@@ -29,16 +29,17 @@
 </template>
 
 <script>
+import TicketService from '@/services/TicketService'
 export default {
   // This page may be unnecessary if we have request details
   name: 'RequestDetailsPage',
   data () {
-    return { 
+    return {
       tickets: [{
-        firstname: 'frank', 
-        lastname: 'James', 
-        email: 'fj@gmail.com', 
-        company: 'city of Regina', 
+        firstname: 'frank',
+        lastname: 'James',
+        email: 'fj@gmail.com',
+        company: 'city of Regina',
         request: 'mysql',
         approver: 'Tom',
         opened: '01:02 03/04/2015',
@@ -46,9 +47,9 @@ export default {
         id: 1}]
     }
   },
-  async mounted() {
+  async mounted () {
     this.requests = (await TicketService.GetAllTickets()).data
-    //do a request to the backend for all the tickets
+    // do a request to the backend for all the tickets
   }
 }
 </script>

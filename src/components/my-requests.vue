@@ -27,17 +27,17 @@ export default {
   name: 'MyRequestsPage',
   data () {
     return {
-      requests: null 
-        //[
-        //{software: 'Operating Map of Gastropathy', status: 'Waiting for Approval', id: 1},
-        //{software: 'Relational Observation System Limited', status: 'Approved', id: 2},
-        //{software: 'Web Utility Table', status: 'Confirm and Close', id: 3}
-        //]
+      requests: null
+      // [
+      // {software: 'Operating Map of Gastropathy', status: 'Waiting for Approval', id: 1},
+      // {software: 'Relational Observation System Limited', status: 'Approved', id: 2},
+      // {software: 'Web Utility Table', status: 'Confirm and Close', id: 3}
+      // ]
     }
   },
-  async mounted() {
+  async mounted () {
     this.requests = (await TicketService.GetAllTickets()).data
-    //do a request to the backend for all the tickets
+    // do a request to the backend for all the tickets
   }
 }
 </script>
