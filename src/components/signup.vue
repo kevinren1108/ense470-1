@@ -47,8 +47,8 @@ export default {
             password: this.password,
             user__status: this.user__status
           })
-          this.$store.dispatch('setToken', response.data.token)
-          this.$store.dispatch('setUser', response.data.user)
+          this.$store.dispatch('login', response.data.user, response.data.token)
+            .then(response => this.$router.push('/'))
         } catch (error) {
           this.error = error.response.data.error
         }
