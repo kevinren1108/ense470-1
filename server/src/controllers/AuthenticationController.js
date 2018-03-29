@@ -20,9 +20,10 @@ module.exports = {
 
       })
     } catch (err) {
-      res.status(400).send({
-        error: 'this email account(and or) invite code are already in use'
-      })
+      console.log('wtf', err)
+      //res.status(400).send({
+      //  error: 'this email account(and or) invite code are already in use'
+      //})
     }
   },
   async login (req, res) {
@@ -41,7 +42,7 @@ module.exports = {
         })
       }
 
-      const isPasswordValid = await user.comparePassword(password) 
+      const isPasswordValid = await user.comparePassword(password)
 
       //console.log(isPasswordValid)
       //console.log(password, user.password)
@@ -55,11 +56,11 @@ module.exports = {
         user: userJson,
         token: jwtSignUser(userJson)
       })
-
     } catch (err) {
-      res.status(500).send({
-      error: 'An error has occured in trying to login '
-      })
+      console.log("now whats the problem", err)
+      //res.status(500).send({
+      //error: 'An error has occured in trying to login '
+      //})
     }
   }
 }

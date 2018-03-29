@@ -6,9 +6,9 @@ module.exports = {
     const schema = {
       first__name: Joi.string().regex(/^[a-zA-Z]{3,30}$/),
       last__name: Joi.string().regex(/^[a-zA-Z]{3,30}$/),
-      email: Joi.string().email(), 
+      email: Joi.string().email(),
       password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/),
-      inv__code: [Joi.string(), Joi.number()]
+      user__Status: [Joi.string(), Joi.number()]
     }
   const{error, value} = Joi.validate(req.body, schema)
 
@@ -20,8 +20,8 @@ module.exports = {
           <br>
           1. It must contain only the following characters: lower case, upper case
           <br>
-          2. it must be at least 3 characters in length and not greater than 30 characters   
-          `    
+          2. it must be at least 3 characters in length and not greater than 30 characters
+          `
         })
         break
       case 'last__name':
@@ -30,8 +30,8 @@ module.exports = {
         <br>
         1. It must contain only the following characters: lower case, upper case
         <br>
-        2. it must be at least 3 characters in length and not greater than 30 characters   
-        `    
+        2. it must be at least 3 characters in length and not greater than 30 characters
+        `
       })
         break
       case 'email':
@@ -45,23 +45,22 @@ module.exports = {
           <br>
           1. It must contain only the following characters: lower case, upper case, numerics
           <br>
-          2. it must be at least 3 characters in length and not greater than 30   
+          2. it must be at least 3 characters in length and not greater than 30
           `
         })
         break
-      case 'inv__code:':
+      case 'user__Status:':
         res.status(400).send({
           error: `The invitation code to match the following rules:
           <br>
-          1. It must contain only the following characters: lower case, upper case, numerics 
+          1. It must contain only the following characters: lower case, upper case, numerics
           `
-          
         })
         break
       default:
         res.status(400).send({
             error: `invalid registration information`
-        }) 
+        })
     }
   }
   else{
