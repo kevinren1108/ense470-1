@@ -38,6 +38,10 @@ export default {
         request: 'mysql',
         id: 1}]
     }
+  },
+  async mounted() {
+    this.requests = (await TicketService.GetAllTickets()).data
+    //do a request to the backend for all the tickets
   }
 }
 </script>
