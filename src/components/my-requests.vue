@@ -9,7 +9,7 @@
         <ul class="list">
           <div v-if="$store.state.user.account__type === 0" v-for="request in requests" :key="request.id">
             <li  v-if="request.UserId === $store.state.user.id" class="list__item list__item--request">
-              <span class="list__item__title">{{request.software_requested}}</span>
+              <span class="list__item__title">{{request.id}}</span>
               <span class="list__item__status">{{request.approval_status}}</span>
               <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">View</button></span>
             </li>
