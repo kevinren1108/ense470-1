@@ -65,6 +65,9 @@ export default {
     }
   },
   methods: {
+    async mounted () {
+      this.software = (await TicketService.GetApprovedTickets()).data
+    },
   }
 }
 </script>

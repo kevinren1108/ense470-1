@@ -21,6 +21,19 @@ module.exports = {
       //res.status(500).send({
       //    error: 'An error has occured while creating a ticket'
       //})
-      }
     }
+  },
+  async getApprovedickets(req, res) {
+    try {
+      const tickets = await Ticket.findAll({
+        where: {
+          user_id: req.user_id,
+          approval_status: 'Approved'
+        }
+      })
+      res.send(tickets)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 }
