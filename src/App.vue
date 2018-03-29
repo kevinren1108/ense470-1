@@ -47,6 +47,7 @@ html, body {
 }
 a {
   text-decoration: inherit;
+  font-size: inherit;
   color: inherit;
 }
 .basic-link:hover {
@@ -55,6 +56,7 @@ a {
 button, .btn {
   transition: all 0.2s ease 0s;
   white-space: nowrap;
+  font: inherit;
 }
 button:hover {
   cursor: pointer;
@@ -151,11 +153,15 @@ button:hover {
   /* margin: 0 20px; */
   padding: 12px 32px;
   max-height: 40px;
+  width: 120px;
   box-sizing: border-box;
 }
 #navbar__btn-logout {
   /* margin: 0 20px; */
   padding: 12px 32px;
+  max-height: 40px;
+  width: 120px;
+  box-sizing: border-box;
 }
 #navbar__bottom {
   z-index: 100;
