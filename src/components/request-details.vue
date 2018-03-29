@@ -18,10 +18,12 @@
                         <hr>
                         <span v-if="ticket.approval_status != 'Pending'">Activate code: {{activate_code}}</span>
                         <hr v-if="ticket.approval_status != 'Pending'">
+                        <div v-if="ticket.approval_status == 'Pending'">
                         <template v-if="$store.state.user.account__type === 1">
                                 <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + tickets.id)">Approve</button></span>
                                 <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + tickets.id)">Deny</button></span>
                         </template>
+                        </div>
                       </div>
                     </div>
                 </ul>
