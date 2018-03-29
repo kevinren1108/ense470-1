@@ -26,11 +26,12 @@ export default {
   name: 'MyRequestsPage',
   data () {
     return {
-      requests: null //[
+      requests: null 
+        //[
         //{software: 'Operating Map of Gastropathy', status: 'Waiting for Approval', id: 1},
         //{software: 'Relational Observation System Limited', status: 'Approved', id: 2},
         //{software: 'Web Utility Table', status: 'Confirm and Close', id: 3}
-      //]
+        //]
     }
   },
   mounted() {

@@ -4,6 +4,9 @@
       <div id="navbar__top">
         <div id="navbar__top__content">
           <div id="navbar__title">Software Procurement Portal</div>
+          <div> 
+            <span v-if="this.$store.state.isUserLoggedIn" id="navbar__user-name">Hello {{$store.state.user.first__name}}</span>
+          </div>
           <button v-if="this.$store.state.isUserLoggedIn" @click="logout" id="navbar__btn-logout" class="btn btn--green btn--small">Log out</button>
           <router-link v-else to="/login" id="navbar__btn-login" class="btn btn--green btn--small">Log in</router-link>
         </div>
@@ -186,6 +189,9 @@ button:hover {
   display: flex;
   align-items: center;
   transition: all 0.2s ease 0s;
+}
+#navbar__user-name{
+  color: #F4F4F5;
 }
 .active-link {
   color: #0098d8;

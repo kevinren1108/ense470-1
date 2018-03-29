@@ -19,8 +19,8 @@ export default {
   data () {
     return {
       title: 'Log in',
-      email: '',
-      password: '',
+      email: 'admin@this.com',
+      password: '12341234',
       error: null
     }
   },
