@@ -7,38 +7,20 @@
             <div v-if="this.$store.state.isUserLoggedIn" class="list-container">
                 <ul class="list">
                     <div v-for="ticket in tickets" :key="ticket.id">
-                      <div>
-                        <li>
-                          <span>Requested by: {{ticket.firstname}}</span>
-                        </li>
-                      </div>
+                      <div><span>Requested by: {{ticket.firstname}}</span></div>
                       <hr>
-                      <div>
-                        <li>
-                          <span>Approve by: {{ticket.approver}}</span>                
-                        </li>
-                      </div>
+                      <div><span>Approve by: {{ticket.approver}}</span></div>
                       <hr>
-                      <div>
-                        <li>
-                          <span>Opened at: {{ticket.opened}}</span>                
-                        </li>
-                      </div>
+                      <div><span>Opened at: {{ticket.opened}}</span></div>
                       <hr>
-                      <div>
-                        <li>
-                          <span>Last Updated at: {{ticket.lastUpdated}}</span>                
-                        </li>
-                      </div>
+                      <div><span>Last Updated at: {{ticket.lastUpdated}}</span></div>
                       <hr>
-                      <div>
-                        <template v-if="$store.state.user.account__type === 1">
-                          <li>
+                      <template v-if="$store.state.user.account__type === 1">
+                        <div>                        
                             <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Accept</button></span>
-                            <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Decline</button></span>           
-                          </li>
-                        </template>
-                      </div>
+                            <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Decline</button></span>             
+                        </div>
+                      </template>
                     </div>
                 </ul>
             </div>
