@@ -12,8 +12,8 @@
         <div id="navbar__bottom__content">
           <div id="navbar__bottom__links"></div>
           <router-link to="/" class="navbar__bottom__link" :class="{'active-link': this.$route.path === '/'}" id="navbar_home">Home</router-link>
-          <router-link v-if="this.$store.state.isUserLoggedIn" to="/my-requests" class="navbar__bottom__link" :class="{'active-link': this.$route.path === '/my-requests'}" id="navbar_placeholder">My Requests</router-link>
-          <router-link v-if="this.$store.state.isUserLoggedIn && this.$store.state.user.account_type == 1" to="/tickets" class="navbar__bottom__link" :class="{'active-link': this.$route.path === '/tickets'}" id="navbar_placeholder">Tickets</router-link>
+          <router-link v-if="this.$store.state.isUserLoggedIn && $store.state.user.account__type === 0" to="/my-requests" class="navbar__bottom__link" :class="{'active-link': this.$route.path === '/my-requests'}" id="navbar_placeholder">My Requests</router-link>
+          <router-link v-if="this.$store.state.isUserLoggedIn && $store.state.user.account__type === 1" to="/my-requests" class="navbar__bottom__link" :class="{'active-link': this.$route.path === '/my-requests'}" id="navbar_placeholder">Tickets</router-link>
         </div>
       </div>
     </div>
