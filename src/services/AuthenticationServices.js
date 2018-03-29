@@ -9,5 +9,8 @@ export default {
   },
   decision (credentials) {
     return Api().post('decision', credentials)
+  },
+  new__Approver (credentials) {
+    return Api().post('')
   }
 }

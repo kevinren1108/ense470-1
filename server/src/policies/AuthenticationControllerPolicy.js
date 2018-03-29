@@ -4,8 +4,8 @@ const Joi = require('joi')
 module.exports = {
   signup(req, res, next){
     const schema = {
-      first__name: Joi.string().regex(/^[a-zA-Z]{3,30}$/),
-      last__name: Joi.string().regex(/^[a-zA-Z]{3,30}$/),
+      first__name: Joi.string().regex(/^[a-zA-Z]{2,30}$/),
+      last__name: Joi.string().regex(/^[a-zA-Z]{2,30}$/),
       email: Joi.string().email(),
       password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/),
       account__type: [Joi.string(), Joi.number()]

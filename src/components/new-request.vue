@@ -14,17 +14,19 @@
     </div>
     <div class="page__btn-container">
       <button class="btn btn--blue btn--large btn--main">Cancel</button>
-      <button class="btn btn--blue btn--large btn--main">Request</button>
+      <button  @click="submitNewRequest" class="btn btn--blue btn--large btn--main">Request</button>
     </div>
   </div>
   </div>
 </template>
 
 <script>
+import TicketService from '@/services/TicketService'
 export default {
   name: 'NewRequestPage',
   data () {
     return {
+      approval__status: 'Pending',
       query: '',
       software: [
         {name: "Alpha Bravo Delta", id: 0},
@@ -32,46 +34,13 @@ export default {
         {name: "Grave Jomers", id: 2},
         {name: "Stellar Fellar", id: 3}
       ],
-<<<<<<< HEAD
-      matches: []
-    }
-  },
-  methods: {
-    search: function() {
-      this.matches = []
-      for (item in this.software) {
-        if (item.includes(query)) {
-          this.matches.push(item)
-        }
-      }
-      return thismatches
-    },
-    async signup () {
-    var isValid = this.validate()
-    if (!isValid) {
-      return 1
-    } else {
-      try {
-        await AuthenticationServices.sign__up({
-          approval_status: this.first__name,
-          software_ID: this.last__name,
-          email: this.email,
-          password: this.password,
-          account__type: this.account__type
-        })
-      } catch (error) {
-        this.error = error
-      }
-=======
       matches: [],
       selected: false,
       zIndex: 0
->>>>>>> a2c1d511511bf8b07d8f8cb1c02113a3daf2b6e7
     }
-   },
   },
   watch: {
-    query: function(query) {
+    query: function (query) {
       let currMatches = []
       if (query.length > 0 && !this.selected) {
         for (let item of this.software) {
@@ -85,13 +54,27 @@ export default {
       this.selected = false
     }
   },
+
   methods: {
-    resultSelect: function(result) {
+    resultSelect: function (result) {
       this.query = result
       this.selected = true
+    },
+    async submitNewRequest () {
+      console.log(this.query)
+      try {
+        const response = await TicketService.CreateNewTicket({
+          approval_status: this.approval__status,
+          software_requested: this.query,
+          UserId: this.$store.state.user.id
+        })
+      } catch (error) {
+        this.error = error
+      }
     }
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

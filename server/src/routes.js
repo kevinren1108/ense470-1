@@ -3,6 +3,7 @@ const AuthenticationControllerPolicy = require('./policies/AuthenticationControl
 const TicketController = require('./controllers/TicketController')
 const SoftwareListController = require('./controllers/SoftwareListController')
 const UserController = require('./controllers/UserController')
+const ApproverListController = require('./controllers/ApproverListController')
 
 module.exports = (app) => {
   app.post('/signup',
@@ -26,6 +27,10 @@ module.exports = (app) => {
 
   app.post('/getID',
   UserController.getID)
+
+  app.post('/createNewApprover',
+  ApproverListController.createNewApprover)
+
 
 }
 
