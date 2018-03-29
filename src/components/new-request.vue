@@ -26,16 +26,16 @@ export default {
     return {
       query: '',
       software: [
-        "Alpha Bravo Delta",
-        "Astro Jammers",
-        "Grave Jomers",
-        "Stellar Fellar"
+        'Alpha Bravo Delta',
+        'Astro Jammers',
+        'Grave Jomers',
+        'Stellar Fellar'
       ],
       matches: []
     }
   },
   methods: {
-    search: function() {
+    search: function () {
       this.matches = []
       for (item in this.software) {
         if (item.includes(query)) {
@@ -46,7 +46,7 @@ export default {
     }
   },
   watch: {
-    query: function(val) {
+    query: function (val) {
       this.matches = []
       for (var item in this.software) {
         if (item.includes(val)) {
@@ -56,7 +56,7 @@ export default {
     }
   },
   computed: {
-    positiveSearchResults: function() {
+    positiveSearchResults: function () {
       return this.matches.length > 0
     }
   }
