@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="page__btn-container">
-      <button class="btn btn--blue btn--large btn--main">Cancel</button>
+      <button @click="$router.push('/my-requests')" class="btn btn--blue btn--large btn--main">Cancel</button>
       <button class="btn btn--blue btn--large btn--main">Request</button>
     </div>
   </div>
