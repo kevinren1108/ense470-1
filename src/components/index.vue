@@ -34,7 +34,7 @@
                   <div v-for="item in software" :key="item.id">
                     <li class="list__item list__item--request">
                       <span class="list__item__title">{{item.name}}</span>
-                      <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">View</button></span>
+                      <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + item.id)">View</button></span>
                     </li>
                     <hr>
                   </div>
@@ -56,11 +56,11 @@ export default {
       software: [
         {
           name: 'Generic Software 1',
-          id: 0
+          id: 1
         },
         {
           name: 'Unique Software',
-          id: 1
+          id: 2
         }
       ]
     }
