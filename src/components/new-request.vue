@@ -4,11 +4,12 @@
     <div class="page__title-container page__title-container--button">
       <h1 class="page__title">Request Software</h1>
     </div>
-    <div>
-      <input type="search" id="searchbar" placeholder="Search..." @change="search" v-model="query">
-      <div :class="{ searching: positiveSearchResults,
-                     'not-searching': !positiveSearchResults }" id="search-results">
-        {{matches}}
+    <div style="position: relative;">
+      <input type="search" id="searchbar" placeholder="Search..." v-model="query">
+      <div v-if="this.matches.length > 0 && !this.selected"  id="search-results-container" :style="{'z-index': this.zIndex}">
+        <ul id="search-results-list">
+          <li class="search-results-list__item" v-for="item in this.matches" :key="item.id" @click="resultSelect(item.name)">{{item.name}}</li>
+        </ul>
       </div>
     </div>
     <div class="page__btn-container">
@@ -26,38 +27,35 @@ export default {
     return {
       query: '',
       software: [
-        "Alpha Bravo Delta",
-        "Astro Jammers",
-        "Grave Jomers",
-        "Stellar Fellar"
+        {name: "Alpha Bravo Delta", id: 0},
+        {name: "Astro Jammers", id:1},
+        {name: "Grave Jomers", id: 2},
+        {name: "Stellar Fellar", id: 3}
       ],
-      matches: []
-    }
-  },
-  methods: {
-    search: function() {
-      this.matches = []
-      for (item in this.software) {
-        if (item.includes(query)) {
-          this.matches.push(item)
-        }
-      }
-      return thismatches
+      matches: [],
+      selected: false,
+      zIndex: 0
     }
   },
   watch: {
-    query: function(val) {
-      this.matches = []
-      for (var item in this.software) {
-        if (item.includes(val)) {
-          this.matches.push(item)
+    query: function(query) {
+      let currMatches = []
+      if (query.length > 0 && !this.selected) {
+        for (let item of this.software) {
+          if (item.name.toLowerCase().includes(query.toLowerCase())) {
+            currMatches.push(item)
+          }
         }
       }
+      this.matches = currMatches
+      this.zIndex = this.matches.length > 0 ? 100 : 0
+      this.selected = false
     }
   },
-  computed: {
-    positiveSearchResults: function() {
-      return this.matches.length > 0
+  methods: {
+    resultSelect: function(result) {
+      this.query = result
+      this.selected = true
     }
   }
 }
@@ -94,20 +92,32 @@ export default {
   box-sizing: border-box;
   font-size: 1.3rem;
   margin: 0 0 11px;
-  z-index: 100;
 }
-#search-results {
+#search-results-container {
   width: 100%;
-  margin: 5px 0 0;
+  margin: -5px 0 0;
+  padding: 6px 6px;
   border: 1px solid rgba(74, 84, 90, 0.4);
   border-radius: 4px;
   background: #FBFBFB;
+  position: absolute;
+  box-sizing: border-box;
 }
-.searching {
- visibility: visible;
+#search-results-list {
+  margin: 0;
+  padding: 0;
 }
-.not-searching {
-  visibility: hidden;
+.search-results-list__item {
+  padding: 5px 10px;
+  text-align: left;
+  width: 100%;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.search-results-list__item:hover {
+  transition: all 0.2s ease 0s;
+  background: #EEEEEE;
+  cursor: pointer;
 }
 .page__btn-container {
   width: 100%;
@@ -138,27 +148,10 @@ ul {
     list-style-type: none;
     padding: 0;
 }
-
 .request__button{
     align-items: right;
 }
-
-li {
-    display: inline-block;
-    margin: 0 10px;
-}
 a {
     color: #42b983;
-}
-.btn--blue {
-    background-color: #0098DB; /* Green */
-    border: none;
-    border-radius: 4px;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
 }
 </style>
