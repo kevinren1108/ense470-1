@@ -4,19 +4,23 @@
             <div class="page__title-container page__title-container--button">
                 <h1 class="page__title">Ticket</h1>
             </div>
-            <div class="list-container">
+            <div v-if="this.$store.state.isUserLoggedIn" class="list-container">
                 <ul class="list">
                     <div v-for="ticket in tickets" :key="ticket.id">
-                        <li class="list__item list__item--request">
-                            <span class="list__item__title">{{ticket.firstname}}</span>
-                            <span class="list__item__title">{{ticket.lastname}}</span>
-                            <span class="list__item__title">{{ticket.email}}</span>
-                            <span class="list__item__title">{{ticket.company}}</span>
-                            <span class="list__item__title">{{ticket.request}}</span>
+                      <div><span>Requested by: {{ticket.firstname}}</span></div>
+                      <hr>
+                      <div><span>Approve by: {{ticket.approver}}</span></div>
+                      <hr>
+                      <div><span>Opened at: {{ticket.opened}}</span></div>
+                      <hr>
+                      <div><span>Last Updated at: {{ticket.lastUpdated}}</span></div>
+                      <hr>
+                      <template v-if="$store.state.user.account__type === 1">
+                        <div>
                             <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Accept</button></span>
                             <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Decline</button></span>
-                        </li>
-                    <hr>
+                        </div>
+                      </template>
                     </div>
                 </ul>
             </div>
@@ -25,23 +29,27 @@
 </template>
 
 <script>
+import TicketService from '@/services/TicketService'
 export default {
   // This page may be unnecessary if we have request details
   name: 'RequestDetailsPage',
   data () {
-    return { 
+    return {
       tickets: [{
-        firstname: 'frank', 
-        lastname: 'James', 
-        email: 'fj@gmail.com', 
-        company: 'city of Regina', 
+        firstname: 'frank',
+        lastname: 'James',
+        email: 'fj@gmail.com',
+        company: 'city of Regina',
         request: 'mysql',
+        approver: 'Tom',
+        opened: '01:02 03/04/2015',
+        lastUpdated: '01:02 03/04/2015',
         id: 1}]
     }
   },
-  async mounted() {
+  async mounted () {
     this.requests = (await TicketService.GetAllTickets()).data
-    //do a request to the backend for all the tickets
+    // do a request to the backend for all the tickets
   }
 }
 </script>
