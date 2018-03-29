@@ -1,35 +1,25 @@
 <template>
     <div class="page">
-        <div>
-            <h1>{{ title }}</h1>
-        </div>
         <div class='page__content'>
-            <table>
-                <tr>
-                    <td>First name:</td>
-                    <td>{{ firstname }}</td>
-                </tr>
-                <tr>
-                    <td>Last name:</td>
-                    <td>{{ lastname }}</td>
-                </tr>
-                <tr>
-                    <td>Email address:</td>
-                    <td>{{ email }}</td>
-                </tr>
-                <tr>
-                    <td>Company:</td>
-                    <td>{{ company }}</td>
-                </tr>
-                <tr>
-                    <td>Request:</td>
-                    <td>{{ request }}</td>
-                </tr>
-                <tr>
-                    <td><button class='btn--blue btn--full'>Accept</button></td>
-                    <td><button class='btn--blue btn--full'>Decline</button></td>
-                </tr>
-            </table>
+            <div class="page__title-container page__title-container--button">
+                <h1 class="page__title">Ticket</h1>
+            </div>
+            <div class="list-container">
+                <ul class="list">
+                    
+                        <li class="list__item list__item--request">
+                            <span class="list__item__title">{{firstname}}</span>
+                            <span class="list__item__title">{{ticket.lastname}}</span>
+                            <span class="list__item__title">{{ticket.email}}</span>
+                            <span class="list__item__title">{{ticket.company}}</span>
+                            <span class="list__item__title">{{ticket.request}}</span>
+                            <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Accept</button></span>
+                            <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Decline</button></span>
+                        </li>
+                    <hr>
+                    
+                </ul>
+            </div>
         </div>
     </div>
 </template>
@@ -40,11 +30,10 @@ export default {
   name: 'RequestDetailsPage',
   data () {
     return {
-      title: 'Approver/ Anaylst Ticket Viewer',
-      firstname: 'frank',
-      lastname: 'James',
-      email: 'fj@gmail.com',
-      company: 'city of Regina',
+      firstname: 'frank', 
+      lastname: 'James', 
+      email: 'fj@gmail.com', 
+      company: 'city of Regina', 
       request: 'mysql'
     }
   }
