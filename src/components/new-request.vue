@@ -32,10 +32,43 @@ export default {
         {name: "Grave Jomers", id: 2},
         {name: "Stellar Fellar", id: 3}
       ],
+<<<<<<< HEAD
+      matches: []
+    }
+  },
+  methods: {
+    search: function() {
+      this.matches = []
+      for (item in this.software) {
+        if (item.includes(query)) {
+          this.matches.push(item)
+        }
+      }
+      return thismatches
+    },
+    async signup () {
+    var isValid = this.validate()
+    if (!isValid) {
+      return 1
+    } else {
+      try {
+        await AuthenticationServices.sign__up({
+          approval_status: this.first__name,
+          software_ID: this.last__name,
+          email: this.email,
+          password: this.password,
+          account__type: this.account__type
+        })
+      } catch (error) {
+        this.error = error
+      }
+=======
       matches: [],
       selected: false,
       zIndex: 0
+>>>>>>> a2c1d511511bf8b07d8f8cb1c02113a3daf2b6e7
     }
+   },
   },
   watch: {
     query: function(query) {

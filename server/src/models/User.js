@@ -34,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       unique: false
     }
+
   }, {
     hooks: {
       //beforeCreate: hashPassword, dont use these: they break the program
@@ -41,6 +42,16 @@ module.exports = (sequelize, DataTypes) => {
       beforeSave: hashPassword
     }
   })
+
+  User.associate = (models) =>  {
+    User.hasMany(models.Ticket, {
+      forignKey: "UserId"
+    }),
+    User.hasOne(models.ApproverList, {
+      forignKey: "ApproverId"
+    })
+  }
+
 
   User.prototype.comparePassword = function (password) {
     //return true
