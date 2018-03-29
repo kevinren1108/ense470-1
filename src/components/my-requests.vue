@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <div class='page__content'>
+    <div v-if="this.$store.state.isUserLoggedIn" class='page__content'>
       <div class="page__title-container page__title-container--button">
         <h1 class="page__title">Open Requests</h1>
         <span class="page__title__btn-container"><button class="btn--green page__title__btn btn--large" @click="$router.push('/new-request')">New Request</button></span>
@@ -28,11 +28,6 @@ export default {
   data () {
     return {
       requests: null
-      // [
-      // {software: 'Operating Map of Gastropathy', status: 'Waiting for Approval', id: 1},
-      // {software: 'Relational Observation System Limited', status: 'Approved', id: 2},
-      // {software: 'Web Utility Table', status: 'Confirm and Close', id: 3}
-      // ]
     }
   },
   async mounted () {
