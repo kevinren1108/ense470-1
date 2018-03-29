@@ -61,14 +61,12 @@ export default {
       this.selected = true
     },
     async submitNewRequest () {
-      console.log(this.query)
       try {
         const response = await TicketService.CreateNewTicket({
           approval_status: this.approval__status,
           software_requested: this.query,
           UserId: this.$store.state.user.id
-        })
-        this.$router.push('/my-requests')
+        }).then(response => this.$router.push('/my-requests'))
       } catch (error) {
         this.error = error
       }

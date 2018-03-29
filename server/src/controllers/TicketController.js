@@ -16,11 +16,11 @@ module.exports = {
   async createNewTicket (req, res) {
     try{
       const ticket = await Ticket.create(req.body)
+      res.status(204).send()
     }catch (err){
-      console.log(err)
-      //res.status(500).send({
-      //    error: 'An error has occured while creating a ticket'
-      //})
+      res.status(500).send({
+         error: 'An error has occured while creating a ticket'
+      })
     }
   },
   async getApprovedTickets(req, res) {
@@ -31,9 +31,9 @@ module.exports = {
             approval_status: 'Approved'
           }
         })
-      res.send(ticket)
+      res.status(200).send(ticket)
     } catch (err) {
-      console.log(err)
+      res.status(500).send({error: "Error fetching approved software"})
     }
   }
 }
