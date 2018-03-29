@@ -12,16 +12,16 @@ module.exports = {
     })
     }
   },
-  async createNewSoftware (req, res) {
+  async createNewApprover (req, res) {
     try{
-      const software = await SoftwareList.create(req.body)
-      const softwareJson = software.toJSON()
+      const approver = await ApproverList.create(req.body)
+      const approverJson = approver.toJSON()
       res.send({
-        software: softwareJson,
+        approver
       })
     }catch (err){
       res.status(500).send({
-        error: 'An error has occured while creating new software'
+        error: 'An error has occured while creating new approver'
       })
       }
     }

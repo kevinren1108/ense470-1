@@ -6,5 +6,8 @@ export default {
   },
   GetApprovedTickets () {
     return Api().get('getApprovedTickets')
+  },
+  CreateNewTicket (credentials) {
+    return Api().post('createNewTicket', credentials)
   }
 }

@@ -46,9 +46,12 @@ export default {
             email: this.email,
             password: this.password,
             account__type: this.account__type
-            
-
           })
+           // if(account__type === '1'){
+           //   AuthenticationServices.new__approver({
+           //     UserId: response.data.id,
+           //   })
+           // }
           this.$store.dispatch('login', {user: response.data.user, token: response.data.token})
             .then(response => this.$router.push('/'))
         } catch (error) {

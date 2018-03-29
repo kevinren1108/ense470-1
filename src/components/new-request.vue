@@ -13,18 +13,20 @@
       </div>
     </div>
     <div class="page__btn-container">
+      <button @click="submitNewRequest" class="btn btn--blue btn--large btn--main">Request</button>
       <button @click="$router.push('/my-requests')" class="btn btn--blue btn--large btn--main">Cancel</button>
-      <button class="btn btn--blue btn--large btn--main">Request</button>
     </div>
   </div>
   </div>
 </template>
 
 <script>
+import TicketService from '@/services/TicketService'
 export default {
   name: 'NewRequestPage',
   data () {
     return {
+      approval__status: 'Pending',
       query: '',
       software: [
         {name: "Alpha Bravo Delta", id: 0},
@@ -38,7 +40,7 @@ export default {
     }
   },
   watch: {
-    query: function(query) {
+    query: function (query) {
       let currMatches = []
       if (query.length > 0 && !this.selected) {
         for (let item of this.software) {
@@ -52,13 +54,27 @@ export default {
       this.selected = false
     }
   },
+
   methods: {
-    resultSelect: function(result) {
+    resultSelect: function (result) {
       this.query = result
       this.selected = true
+    },
+    async submitNewRequest () {
+      console.log(this.query)
+      try {
+        const response = await TicketService.CreateNewTicket({
+          approval_status: this.approval__status,
+          software_requested: this.query,
+          UserId: this.$store.state.user.id
+        })
+      } catch (error) {
+        this.error = error
+      }
     }
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
