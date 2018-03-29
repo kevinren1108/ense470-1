@@ -36,9 +36,9 @@ export default {
             password: this.password
           })
           this.$store.dispatch('login', response.data.user, response.data.token)
-            .then(response => this.$router.push('/'))
+            .then(() => this.$router.push('/'))
         } catch (error) {
-          this.error = error.response.data.error
+          this.error = error
         }
       }
     },

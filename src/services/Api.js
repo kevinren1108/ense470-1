@@ -4,7 +4,7 @@ export default () => {
   return axios.create({
     // baseURL: 'https://ense470.herokuapp.com/'
     baseURL: 'http://localhost:8080'
-    //baseURL: process.env.BASE_URL || 'http://localhost:8080'
+    // baseURL: process.env.BASE_URL || 'http://localhost:8080'
   })
 }
 
