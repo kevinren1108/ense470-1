@@ -15,6 +15,7 @@ module.exports = {
   },
   async createNewTicket (req, res) {
     try{
+      console.log(req.body)
       const ticket = await Ticket.create(req.body)
     }catch (err){
       console.log(err)
