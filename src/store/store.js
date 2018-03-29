@@ -16,8 +16,7 @@ export default new Vuex.Store({
         state.user = payload.user
         state.token = payload.token
         state.isUserLoggedIn = true
-      }
-      else {
+      } else {
         state.isUserLoggedIn = false
       }
     },

@@ -6,9 +6,9 @@
             </div>
             <div class="list-container">
                 <ul class="list">
-                    
+                    <div v-for="ticket in tickets" :key="ticket.id">
                         <li class="list__item list__item--request">
-                            <span class="list__item__title">{{firstname}}</span>
+                            <span class="list__item__title">{{ticket.firstname}}</span>
                             <span class="list__item__title">{{ticket.lastname}}</span>
                             <span class="list__item__title">{{ticket.email}}</span>
                             <span class="list__item__title">{{ticket.company}}</span>
@@ -17,7 +17,7 @@
                             <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Decline</button></span>
                         </li>
                     <hr>
-                    
+                    </div>
                 </ul>
             </div>
         </div>
@@ -29,12 +29,14 @@ export default {
   // This page may be unnecessary if we have request details
   name: 'RequestDetailsPage',
   data () {
-    return {
-      firstname: 'frank', 
-      lastname: 'James', 
-      email: 'fj@gmail.com', 
-      company: 'city of Regina', 
-      request: 'mysql'
+    return { 
+      tickets: [{
+        firstname: 'frank', 
+        lastname: 'James', 
+        email: 'fj@gmail.com', 
+        company: 'city of Regina', 
+        request: 'mysql',
+        id: 1}]
     }
   }
 }

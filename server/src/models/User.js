@@ -30,8 +30,8 @@ module.exports = (sequelize, DataTypes) => {
       unique: true
     },
     password: DataTypes.STRING,
-    user__Status:{
-      type: DataTypes.STRING,
+    account__type:{
+      type: DataTypes.INTEGER,
       unique: false
     }
   }, {
