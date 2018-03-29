@@ -13,8 +13,8 @@
       </div>
     </div>
     <div class="page__btn-container">
-      <button @click="submitNewRequest" class="btn btn--blue btn--large btn--main">Request</button>
       <button @click="$router.push('/my-requests')" class="btn btn--blue btn--large btn--main">Cancel</button>
+      <button @click="submitNewRequest" class="btn btn--blue btn--large btn--main">Request</button>
     </div>
   </div>
   </div>
@@ -68,6 +68,7 @@ export default {
           software_requested: this.query,
           UserId: this.$store.state.user.id
         })
+        this.$router.push('/my-requests')
       } catch (error) {
         this.error = error
       }
