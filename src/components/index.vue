@@ -42,12 +42,6 @@
               </div>
             </div>
           </template>
-          <!-- <div id="row-1"><input v-on:change="checkEmail()" type="text" class="login__input" id="email" placeholder="Email"/><div id="em__msg"></div></div>
-          <div id="row-2"><input v-on:change="checkPassword()" type="password" class="login__input" id="password" placeholder="Password"/><div id="pw__msg"></div></div>
-          <div id="row-3">
-            <router-link to="/"><button v-on:click="validate()" class="btn--blue btn--large" id="login__submit">Log in</button></router-link>
-            <p>Dont have an account? <a href="/#/signup" class="basic-link">Sign up now</a></p>
-          </div> -->
         </div>
     </div>
 </template>

@@ -1,26 +1,28 @@
 <template>
     <div class="page">
-        <div class='page__content'>
+        <div v-if="this.$store.state.isUserLoggedIn" class='page__content'>
             <div class="page__title-container page__title-container--button">
                 <h1 class="page__title">Ticket</h1>
             </div>
             <div v-if="this.$store.state.isUserLoggedIn" class="list-container">
                 <ul class="list">
                     <div v-for="ticket in tickets" :key="ticket.id">
-                      <div><span>Requested by: {{ticket.firstname}}</span></div>
-                      <hr>
-                      <div><span>Approve by: {{ticket.approver}}</span></div>
-                      <hr>
-                      <div><span>Opened at: {{ticket.opened}}</span></div>
-                      <hr>
-                      <div><span>Last Updated at: {{ticket.lastUpdated}}</span></div>
-                      <hr>
-                      <template v-if="$store.state.user.account__type === 1">
-                        <div>
-                            <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Accept</button></span>
-                            <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Decline</button></span>
-                        </div>
-                      </template>
+                      <div v-if="ticket.id == $route.path.split('/')[$route.path.split('/').length-1]" >
+                        <span>Ticket state: {{ticket.approval_status}}</span>
+                        <hr>
+                        <span v-if="ticket.approval_status != 'Pending'">Approve by: {{approver}}</span>
+                        <hr v-if="ticket.approval_status != 'Pending'">
+                        <span>Opened at: {{ticket.createdAt}}</span>
+                        <hr>
+                        <span>Last Updated at: {{ticket.updatedAt}}</span>
+                        <hr>
+                        <span v-if="ticket.approval_status != 'Pending'">Activate code: {{activate_code}}</span>
+                        <hr v-if="ticket.approval_status != 'Pending'">
+                        <template v-if="$store.state.user.account__type === 1">
+                                <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + tickets.id)">Approve</button></span>
+                                <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + tickets.id)">Deny</button></span>
+                        </template>
+                      </div>
                     </div>
                 </ul>
             </div>
@@ -35,21 +37,26 @@ export default {
   name: 'RequestDetailsPage',
   data () {
     return {
-      tickets: [{
-        firstname: 'frank',
-        lastname: 'James',
-        email: 'fj@gmail.com',
-        company: 'city of Regina',
-        request: 'mysql',
-        approver: 'Tom',
-        opened: '01:02 03/04/2015',
-        lastUpdated: '01:02 03/04/2015',
-        id: 1}]
+      tickets: null,
+      activate_code: 'DASD-1ED1-VCUD-SI3N-DIAM',
+      approver: 'Joe Davis'
     }
   },
   async mounted () {
-    this.requests = (await TicketService.GetAllTickets()).data
+    this.tickets = (await TicketService.GetAllTickets()).data
     // do a request to the backend for all the tickets
+  },
+  async decision () {
+      try {
+          const response = await AuthenticationServices.decision({
+            id: this.id,
+            new_state: this.new_state
+          })
+          this.$store.dispatch('login', {user: response.data.user, token: response.data.token})
+            .then(() => this.$router.push('/'))
+        } catch (error) {
+          this.error = error
+        }
   }
 }
 </script>
