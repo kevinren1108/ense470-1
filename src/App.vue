@@ -26,13 +26,13 @@
 
 <script>
 export default {
-  name:  'App',
+  name: 'App',
   methods: {
     logout () {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
       this.$router.push({
-        name:'index'
+        name: 'index'
       })
     }
   }

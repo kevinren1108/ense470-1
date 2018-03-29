@@ -1,4 +1,4 @@
-const {User} = require('../models')
+const {user} = require('../models')
 const jwt = require('jsonwebtoken')
 const config = require('../config/config')
 
@@ -12,7 +12,7 @@ function jwtSignUser (user){
 module.exports = {
   async signup (req, res) {
     try {
-      const user = await User.create(req.body)
+      const user = await user.create(req.body)
       const userJson = user.toJSON()
       res.send({
         user: userJson,
@@ -20,15 +20,16 @@ module.exports = {
 
       })
     } catch (err) {
-      res.status(400).send({
-        error: 'this email account(and or) invite code are already in use'
-      })
+      console.log('wtf', err)
+      //res.status(400).send({
+      //  error: 'this email account(and or) invite code are already in use'
+      //})
     }
   },
   async login (req, res) {
     try {
       const {email, password} = req.body
-      const user = await User.findOne({
+      const user = await user.findOne({
         where: {
           email: email
         }
@@ -39,8 +40,7 @@ module.exports = {
         })
       }
 
-      const isPasswordValid = await user.comparePassword(password) 
-      
+      const isPasswordValid = await user.comparePassword(password)
       //console.log(isPasswordValid)
       //console.log(password, user.password)
       if(!isPasswordValid){
@@ -53,13 +53,10 @@ module.exports = {
         user: userJson,
         token: jwtSignUser(userJson)
       })
- 
     } catch (err) {
       res.status(500).send({
       error: 'An error has occured in trying to login '
-      })  
+      })
     }
   }
 }
-    
-

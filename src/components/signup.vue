@@ -4,13 +4,13 @@
         <div class="page__title-container">
           <h1 class="page__title">Sign up</h1>
         </div>
-        <div id="row-1"><input  type="text" v-model="first__name" class="login__input" id="first__name" placeholder="First Name"/><div id="fn__msg"></div></div>
-        <div id="row-2"><input  type="text" v-model="last__name" class="login__input" id="last__name" placeholder="Last Name"/><div id="ln__msg"></div></div>
-        <div id="row-3"><input  type="text" v-model="email" class="login__input" id="email" placeholder="Email"/><div id="em__msg"></div></div>
+        <div id="row-1"><input type="text" v-model="first__name" class="login__input" id="first__name" placeholder="First Name"/><div id="fn__msg"></div></div>
+        <div id="row-2"><input type="text" v-model="last__name" class="login__input" id="last__name" placeholder="Last Name"/><div id="ln__msg"></div></div>
+        <div id="row-3"><input type="text" v-model="email" class="login__input" id="email" placeholder="Email"/><div id="em__msg"></div></div>
         <div id="row-4"><input type="password" v-model="password" class="login__input" id="password" placeholder="Password"/><div id="pw__msg"></div></div>
         <div id="row-5"><input type="password" v-model="vf__password" class="login__input" id="verify__password" placeholder="Verify Password"/><div id="vpw__msg"></div></div>
         <div id="row-6">
-          <button v-on:click="validate(); submit__signup"  class="btn--blue btn--large" id="signup__submit">Sign up</button>
+          <button @click="signup"  class="btn--blue btn--large" id="signup__submit">Sign up</button>
           <p>Already have an account? <router-link to="/login" class="basic-link">Log in here</router-link></p>
         </div>
       </div>
@@ -34,12 +34,11 @@ export default {
     }
   },
   methods: {
-    async submit__signup () {
+    async signup () {
       var isValid = this.validate()
       if (!isValid) {
-        return
-      }
-      else {
+        return 1
+      } else {
         try {
           const response = await AuthenticationServices.sign__up({
             first__name: this.first__name,
@@ -82,6 +81,8 @@ export default {
       var errorMsg = emErrorMsg + vpwErrorMsg
       if (errorMsg.length > 0) {
         return false
+      } else {
+        return true
       }
     }
   }
