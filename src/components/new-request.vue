@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-  <div class='page__content'>
+  <div v-if="this.$store.state.isUserLoggedIn" class='page__content'>
     <div class="page__title-container page__title-container--button">
       <h1 class="page__title">Request Software</h1>
     </div>
