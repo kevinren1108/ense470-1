@@ -23,15 +23,15 @@ module.exports = {
       //})
     }
   },
-  async getApprovedickets(req, res) {
+  async getApprovedTickets(req, res) {
     try {
-      const tickets = await Ticket.findAll({
-        where: {
-          user_id: req.user_id,
-          approval_status: 'Approved'
-        }
-      })
-      res.send(tickets)
+      const ticket = await Ticket.findAll({
+          where: {
+            user_id: req.user_id,
+            approval_status: 'Approved'
+          }
+        })
+      res.send(ticket)
     } catch (err) {
       console.log(err)
     }
