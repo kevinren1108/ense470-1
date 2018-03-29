@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default () => {
   return axios.create({
-    baseURL: (process.env.DB_HOST || 'localhost') + ':' + (process.env.PORT || 8080)
+    baseURL: process.env.BASE_URL || 'http://localhost:8080'
   })
 }
 
