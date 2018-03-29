@@ -4,19 +4,41 @@
             <div class="page__title-container page__title-container--button">
                 <h1 class="page__title">Ticket</h1>
             </div>
-            <div class="list-container">
+            <div v-if="this.$store.state.isUserLoggedIn" class="list-container">
                 <ul class="list">
                     <div v-for="ticket in tickets" :key="ticket.id">
-                        <li class="list__item list__item--request">
-                            <span class="list__item__title">{{ticket.firstname}}</span>
-                            <span class="list__item__title">{{ticket.lastname}}</span>
-                            <span class="list__item__title">{{ticket.email}}</span>
-                            <span class="list__item__title">{{ticket.company}}</span>
-                            <span class="list__item__title">{{ticket.request}}</span>
-                            <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Accept</button></span>
-                            <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Decline</button></span>
+                      <div>
+                        <li>
+                          <span>Requested by: {{ticket.firstname}}</span>
                         </li>
-                    <hr>
+                      </div>
+                      <hr>
+                      <div>
+                        <li>
+                          <span>Approve by: {{ticket.approver}}</span>                
+                        </li>
+                      </div>
+                      <hr>
+                      <div>
+                        <li>
+                          <span>Opened at: {{ticket.opened}}</span>                
+                        </li>
+                      </div>
+                      <hr>
+                      <div>
+                        <li>
+                          <span>Last Updated at: {{ticket.lastUpdated}}</span>                
+                        </li>
+                      </div>
+                      <hr>
+                      <div>
+                        <template v-if="$store.state.user.account__type === 1">
+                          <li>
+                            <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Accept</button></span>
+                            <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">Decline</button></span>           
+                          </li>
+                        </template>
+                      </div>
                     </div>
                 </ul>
             </div>
@@ -36,6 +58,9 @@ export default {
         email: 'fj@gmail.com', 
         company: 'city of Regina', 
         request: 'mysql',
+        approver: 'Tom',
+        opened: '01:02 03/04/2015',
+        lastUpdated: '01:02 03/04/2015',
         id: 1}]
     }
   },
