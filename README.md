@@ -4,6 +4,11 @@
 
 ## Build Setup
 
+### User account:
+Account: user@this.com Password: 12341234
+### Analyst/approver account:
+Account: admin@this.com Password: 12341234
+
 ``` bash
 # install dependencies
 npm install
