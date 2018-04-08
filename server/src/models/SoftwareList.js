@@ -13,9 +13,11 @@ module.exports = (sequelize, DataTypes) => {
 
   SoftwareList.associate = (models) =>  {
     SoftwareList.hasMany(models.ApproverList, {
-      forignKey: "SoftwareResponsibleFor"
+      foreignKey: "SoftwareId"
     })
   }
   return SoftwareList
 }
+//
 
+///
