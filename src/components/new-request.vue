@@ -28,16 +28,15 @@ export default {
     return {
       approval__status: 'Pending',
       query: '',
-      software: [
-        {name: "Alpha Bravo Delta", id: 0},
-        {name: "Astro Jammers", id:1},
-        {name: "Grave Jomers", id: 2},
-        {name: "Stellar Fellar", id: 3}
-      ],
+      software: null,
       matches: [],
       selected: false,
       zIndex: 0
     }
+  },
+  async mounted () {
+    console.log("Fetch software")
+    this.software = (await SoftwareServices.GetAllSoftware()).data
   },
   watch: {
     query: function (query) {
@@ -54,11 +53,18 @@ export default {
       this.selected = false
     }
   },
-
   methods: {
     resultSelect: function (result) {
       this.query = result
       this.selected = true
+    },
+    async getSoftware () {
+     try {
+       const response = await SoftwareServices.GetAllSoftware({
+       }).then(response => {this.software = response; console.log(response)})
+     } catch (error) {
+       this.error = error
+     }
     },
     async submitNewRequest () {
       try {

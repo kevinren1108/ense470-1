@@ -1,5 +1,4 @@
 
-
 module.exports = (sequelize, DataTypes) => {
   const SoftwareList = sequelize.define("SoftwareList", {
     id:{

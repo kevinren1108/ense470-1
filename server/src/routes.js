@@ -7,13 +7,13 @@ const ApproverListController = require('./controllers/ApproverListController')
 
 module.exports = (app) => {
   app.post('/signup',
-   AuthenticationControllerPolicy.signup,
-   AuthenticationController.signup)
+  AuthenticationControllerPolicy.signup,
+  AuthenticationController.signup)
 
   app.post('/login',
-   AuthenticationController.login)
+  AuthenticationController.login)
 
-   app.get('/allTickets',
+  app.get('/allTickets',
   TicketController.getAllTickets)
 
   app.post('/createNewTicket',
