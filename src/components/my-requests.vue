@@ -2,12 +2,12 @@
   <div class="page">
     <div v-if="this.$store.state.isUserLoggedIn" class='page__content'>
       <div class="page__title-container page__title-container--button">
-        <h1 class="page__title">Open Requests</h1>
+        <h1 class="page__title">My Requests</h1>
         <span class="page__title__btn-container"><button class="btn--green page__title__btn btn--large" @click="$router.push('/new-request')">New Request</button></span>
       </div>
       <div class="list-container">
         <ul class="list">
-          <div v-if="$store.state.user.account__type === 0" v-for="request in requests" :key="request.id">
+          <div v-for="request in requests" :key="request.id">
             <li  v-if="request.UserId === $store.state.user.id" class="list__item list__item--request">
               <span class="list__item__title">{{request.id}}</span>
               <span class="list__item__status">{{request.approval_status}}</span>
@@ -15,15 +15,24 @@
             </li>
             <hr v-if="request.user_id === $store.state.user.id">
           </div>
-          <div v-if="$store.state.user.account__type === 1" v-for="request in requests" :key="request.id">
-            <li  v-if="request.approval_status === 'Pending'" class="list__item list__item--request">
-              <span class="list__item__title">{{request.id}}</span>
-              <span class="list__item__status">{{request.approval_status}}</span>
-              <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">View</button></span>
-            </li>
-            <hr v-if="request.user_id === $store.state.user.id">
-          </div>
         </ul>
+      </div>
+      <div v-if="$store.state.user.account__type === 1">
+        <div class="page__title-container page__title-container--button">
+          <h1 class="page__title">Pending Tickets</h1>
+        </div>
+        <div class="list-container">
+          <ul class="list">
+            <div v-for="request in requests" :key="request.id">
+              <li  v-if="request.approval_status === 'Pending'" class="list__item list__item--request">
+                <span class="list__item__title">{{request.id}}</span>
+                <span class="list__item__status">{{request.approval_status}}</span>
+                <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">View</button></span>
+              </li>
+              <hr v-if="request.user_id === $store.state.user.id">
+            </div>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -85,6 +94,7 @@ export default {
   border-radius: 4px;
   background: #FBFBFB;
   padding: 6px 6px;
+  margin: 0 0 10px;
   box-sizing: border-box;
 }
 .list {
