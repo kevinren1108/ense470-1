@@ -3,32 +3,46 @@ const {Ticket, SoftwareList} = require('../models')
 
 module.exports = {
   async getAllTickets (req, res) {
-  try{
-    const ticket = await Ticket.findAll()
-    res.send(ticket)
-  }catch (err){
-    res.status(500).send({
-        error: 'An error has occured while retrieving tickets'
-    })
+    try {
+      const ticket = await Ticket.findAll()
+      res.send(ticket)
+    } catch (err){
+      res.status(500).send({
+          error: 'An error has occured while retrieving all tickets: ' + err
+      })
     }
   },
-  async getUserTickets(req,res){
-  try{
-    const ticket = await Ticket.findAll({
-      where: {
-        user_id: req.user_id,
-      },
-      include: [{
-        model: SoftwareList,
-        as: 'Software',
-        where: id = req.software_id
-      }]
-    })
-    res.send(ticket)
-  }catch (err) {
-    console.log(err)
-    //res.status(500).send({error: "Error fetching User tickets"})
-  }
+  async getMyRequests(req,res){
+    try {
+      const ticket = await Ticket.findAll({
+        where: {
+          user_id: req.user_id,
+        },
+        include: [{
+          model: SoftwareList,
+          as: 'Software',
+          where: id = req.software_id
+        }]
+      })
+      res.send(ticket)
+    } catch (err) {
+      res.status(500).send({
+        error: "An error has occurred while retrieving user's requests: " + err
+      })
+    }
+  },
+  async getMyPendingTickets(req, res) {
+    try {
+      const tickets = await Ticket.findAll({
+        where: {
+          // Get tickets where SoftwareId matches SoftwareId linked to req.UserId in ApproverLists
+        }
+      })
+    } catch(err) {
+      res.status(500).send({
+        error: "An error has occurred while retrieving user's pending tickets: " + err
+      })
+    }
   },
   async createNewTicket (req, res) {
     try{

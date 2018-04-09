@@ -40,8 +40,11 @@ module.exports = (app) => {
   app.post('/createNewApprover',
   ApproverListController.createNewApprover)
 
-  app.post('/getUserTickets',
-  TicketController.getUserTickets)
+  app.post('/getMyRequests',
+  TicketController.getMyRequests)
+
+  app.post('/getMyPendingTickets',
+  TicketController.getMyPendingTickets)
 
 }
 
