@@ -40,10 +40,10 @@ module.exports = (app) => {
   app.post('/createNewApprover',
   ApproverListController.createNewApprover)
 
-  app.post('/getMyRequests',
+  app.get('/getMyRequests/:UserId',
   TicketController.getMyRequests)
 
-  app.post('/getMyPendingTickets',
+  app.get('/getMyPendingTickets/:UserId',
   TicketController.getMyPendingTickets)
 
 }

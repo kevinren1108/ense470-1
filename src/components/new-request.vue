@@ -5,10 +5,10 @@
       <h1 class="page__title">Request Software</h1>
     </div>
     <div style="position: relative;">
-      <input type="search" id="searchbar" placeholder="Search..." v-model="query">
+      <input type="search" id="searchbar" placeholder="Search..." v-model="query.softwareName">
       <div v-if="this.matches.length > 0 && !this.selected"  id="search-results-container" :style="{'z-index': this.zIndex}">
         <ul id="search-results-list">
-          <li class="search-results-list__item" v-for="item in this.matches" :key="item.id" @click="resultSelect(item.softwareName)">{{item.softwareName}}</li>
+          <li class="search-results-list__item" v-for="item in this.matches" :key="item.id" @click="resultSelect(item)">{{item.softwareName}}</li>
         </ul>
       </div>
     </div>
@@ -29,7 +29,7 @@ export default {
   data () {
     return {
       approval__status: 'Pending',
-      query: '',
+      query: { softwareName: '', id: 0 },
       software: null,
       matches: [],
       selected: false,
@@ -42,10 +42,11 @@ export default {
   },
   watch: {
     query: function (query) {
+      console.log(query)
       let currMatches = []
-      if (query.length > 0 && !this.selected) {
+      if (query.softwareName.length > 0 && !this.selected) {
         for (let item of this.software) {
-          if (item.softwareName.toLowerCase().includes(query.toLowerCase())) {
+          if (item.softwareName.toLowerCase().includes(query.softwareName.toLowerCase())) {
             currMatches.push(item)
           }
         }
@@ -72,7 +73,7 @@ export default {
       try {
         const response = await TicketService.CreateNewTicket({
           approval_status: this.approval__status,
-          software_requested: this.query,
+          software_requested: this.query.id,
           UserId: this.$store.state.user.id
         }).then(response => this.$router.push('/my-requests'))
       } catch (error) {

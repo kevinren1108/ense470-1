@@ -1,1 +1,3 @@
-pg_restore --verbose --no-acl --no-owner -h localhost -p 5432 -d ense470 < latest_db.dump
+Step 1: CREATE TABLE ense470;
+
+Step 2: pg_restore --verbose --no-acl --no-owner -h localhost -p 5432 -d ense470 < ense470.dump

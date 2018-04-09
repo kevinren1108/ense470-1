@@ -45,10 +45,10 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = (models) =>  {
     User.hasMany(models.Ticket, {
-      forignKey: "UserId"
+      foriegnKey: "UserId"
     }),
     User.hasOne(models.ApproverList, {
-      forignKey: "ApproverId"
+      foriegnKey: "ApproverId"
     })
   }
 

@@ -4,11 +4,11 @@ export default {
   GetAllTickets () {
     return Api().get('allTickets')
   },
-  GetMyRequests () {
-    return Api().get('getMyRequests')
+  GetMyRequests (userId) {
+    return Api().get('getMyRequests/' + userId)
   },
-  GetMyPendingTickets () {
-    return Api().get('getMyPendingTickets')
+  GetMyPendingTickets (userId) {
+    return Api().get('getMyPendingTickets/' + userId)
   },
   GetApprovedTickets () {
     return Api().get('getApprovedTickets')

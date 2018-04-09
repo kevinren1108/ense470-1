@@ -16,12 +16,11 @@ module.exports = {
     try {
       const ticket = await Ticket.findAll({
         where: {
-          user_id: req.user_id,
+          UserId: req.params.UserId,
         },
         include: [{
           model: SoftwareList,
-          as: 'Software',
-          where: id = req.software_id
+          as: 'Software'
         }]
       })
       res.send(ticket)
