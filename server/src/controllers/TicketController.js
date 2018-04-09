@@ -1,4 +1,5 @@
-const {Ticket} = require('../models')
+const {Ticket, SoftwareList} = require('../models')
+
 
 module.exports = {
   async getAllTickets (req, res) {
@@ -10,6 +11,24 @@ module.exports = {
         error: 'An error has occured while retrieving tickets'
     })
     }
+  },
+  async getUserTickets(req,res){
+  try{
+    const ticket = await Ticket.findAll({
+      where: {
+        user_id: req.user_id,
+      },
+      include: [{
+        model: SoftwareList,
+        as: 'Software',
+        where: id = req.software_id
+      }]
+    })
+    res.send(ticket)
+  }catch (err) {
+    console.log(err)
+    //res.status(500).send({error: "Error fetching User tickets"})
+  }
   },
   async createNewTicket (req, res) {
     try{

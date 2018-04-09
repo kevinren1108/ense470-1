@@ -8,7 +8,7 @@
       <input type="search" id="searchbar" placeholder="Search..." v-model="query">
       <div v-if="this.matches.length > 0 && !this.selected"  id="search-results-container" :style="{'z-index': this.zIndex}">
         <ul id="search-results-list">
-          <li class="search-results-list__item" v-for="item in this.matches" :key="item.id" @click="resultSelect(item.name)">{{item.name}}</li>
+          <li class="search-results-list__item" v-for="item in this.matches" :key="item.id" @click="resultSelect(item.softwareName)">{{item.softwareName}}</li>
         </ul>
       </div>
     </div>
@@ -21,7 +21,9 @@
 </template>
 
 <script>
+import SoftwareServices from '@/services/SoftwareServices'
 import TicketService from '@/services/TicketService'
+
 export default {
   name: 'NewRequestPage',
   data () {
@@ -34,7 +36,7 @@ export default {
       zIndex: 0
     }
   },
-  async mounted () {
+  async created () {
     console.log("Fetch software")
     this.software = (await SoftwareServices.GetAllSoftware()).data
   },
@@ -43,7 +45,7 @@ export default {
       let currMatches = []
       if (query.length > 0 && !this.selected) {
         for (let item of this.software) {
-          if (item.name.toLowerCase().includes(query.toLowerCase())) {
+          if (item.softwareName.toLowerCase().includes(query.toLowerCase())) {
             currMatches.push(item)
           }
         }

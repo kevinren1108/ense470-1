@@ -2,12 +2,14 @@
     <div class="page">
         <div v-if="this.$store.state.isUserLoggedIn" class='page__content'>
             <div class="page__title-container page__title-container--button">
-                <h1 class="page__title">Ticket</h1>
+                <h1 class="page__title">Details</h1>
             </div>
             <div v-if="this.$store.state.isUserLoggedIn" class="list-container">
                 <ul class="list">
                     <div v-for="ticket in tickets" :key="ticket.id">
                       <div v-if="ticket.id == $route.path.split('/')[$route.path.split('/').length-1]" >
+                        <span>Software Name: {{ticket.id}}</span>
+                        <hr>
                         <span>Ticket state: {{ticket.approval_status}}</span>
                         <hr>
                         <span v-if="ticket.approval_status != 'Pending'">Approve by: {{approver}}</span>
