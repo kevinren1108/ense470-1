@@ -46,12 +46,10 @@ module.exports = {
         },
         raw: true
       }).then(async managedSoftwareIds => {
-        console.log("SOFTWARE IDS ================ ", managedSoftwareIds)
         let ids = []
         for (item of managedSoftwareIds) {
           ids.push(item.SoftwareId)
         }
-        console.log("SOFTWARE IDS ================ ", ids)
         await Ticket.findAll({
           where: {
             SoftwareId: {

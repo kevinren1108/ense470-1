@@ -29,9 +29,15 @@ module.exports = {
         attributes: ['SoftwareId'],
         where: {
           UserId: req.params.UserId
+        },
+        raw: true
+      }).then(managedSoftwareIds => {
+        let ids = []
+        for (item of managedSoftwareIds) {
+          ids.push(item.SoftwareId)
         }
+        res.send(ids)
       })
-      res.send(software)
     } catch (err){
       res.status(500).send({
         error: 'An error has occured while retrieving managed software: ' + err
