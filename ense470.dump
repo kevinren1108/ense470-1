@@ -390,12 +390,10 @@ COPY public."SoftwareLists" (id, "softwareName", "softwareAcrynom", "softwareAct
 --
 
 COPY public."Tickets" (id, approval_status, "createdAt", "updatedAt", "SoftwareId", "UserId") FROM stdin;
-1	pending	2018-04-09 14:33:34.364-06	2018-04-09 14:33:34.364-06	\N	73
-2	Pending	2018-04-09 14:34:16.521-06	2018-04-09 14:34:16.521-06	\N	74
-3	Pending	2018-04-09 15:54:41.315-06	2018-04-09 15:54:41.315-06	\N	74
-4	Pending	2018-04-09 17:20:52.203-06	2018-04-09 17:20:52.203-06	\N	74
 5	Pending	2018-04-09 17:24:47.668-06	2018-04-09 17:24:47.668-06	15	74
 6	Pending	2018-04-09 17:25:22.737-06	2018-04-09 17:25:22.737-06	24	74
+7	Pending	2018-04-09 21:43:46.636-06	2018-04-09 21:43:46.636-06	2	74
+8	Pending	2018-04-09 21:45:02.976-06	2018-04-09 21:45:02.976-06	7	74
 \.
 
 
@@ -499,7 +497,7 @@ SELECT pg_catalog.setval('public."SoftwareLists_id_seq"', 74, true);
 -- Name: Tickets_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Tickets_id_seq"', 6, true);
+SELECT pg_catalog.setval('public."Tickets_id_seq"', 8, true);
 
 
 --
