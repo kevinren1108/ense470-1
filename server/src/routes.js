@@ -30,7 +30,7 @@ module.exports = (app) => {
   app.get('/getAllSoftware',
   SoftwareListController.getAllSoftware)
 
-  app.get('/getApprovedTickets',
+  app.get('/getApprovedTickets/:UserId',
   TicketController.getApprovedTickets)
 
   app.post('/createNewSoftware',
