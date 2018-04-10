@@ -6,8 +6,8 @@
             </div>
             <div v-if="this.$store.state.isUserLoggedIn" class="list-container">
                 <ul class="list">
-                    <div v-for="ticket in tickets" :key="ticket.id">
-                      <div v-if="ticket.id == $route.path.split('/')[$route.path.split('/').length-1]" >
+                    <div>
+                      <div v-if="ticket !== null" >
                         <span>Software Name: {{ticket.Software.softwareName}}</span>
                         <hr>
                         <span>Status: {{ticket.approval_status}}</span>
@@ -41,13 +41,13 @@ export default {
   name: 'RequestDetailsPage',
   data () {
     return {
-      tickets: null,
+      ticket: null,
       activate_code: 'DASD-1ED1-VCUD-SI3N-DIAM',
       approver: 'Joe Davis'
     }
   },
   async mounted () {
-    this.tickets = (await TicketService.GetAllTickets()).data
+    this.ticket = (await TicketService.GetTicketDetails(this.$route.params.id)).data
     // do a request to the backend for all the tickets
   },
   async decision () {
@@ -83,7 +83,6 @@ export default {
     },
     checkIfApprover () {
       for (item in this.$store.state.managedSoftwareIds) {
-        
       }
     }
   }

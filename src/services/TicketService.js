@@ -14,7 +14,7 @@ export default {
     return Api().get('getApprovedTickets')
   },
   GetTicketDetails(ticketId) {
-    return Api().get('getTicketDetails', { TicketId: ticketId })
+    return Api().get('getTicketDetails/' + ticketId)
   },
   CreateNewTicket (credentials) {
     return Api().post('createNewTicket', credentials)

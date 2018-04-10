@@ -137,25 +137,25 @@ module.exports = {
     } catch (err) {
       res.status(500).send(err)
     }
+  },
+  async getTicketDetails(req,res){
+    console.log("HHEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEECK")
+    try {
+      const ticket = await Ticket.findOne({
+        where: {
+          id: req.params.TicketId
+        },
+        include: [{
+          model: SoftwareList,
+          as: 'Software'
+        }]
+      })
+      res.send(ticket)
+    } catch (err) {
+      res.status(500).send({
+        error: "An error has occurred while retrieving ticket: " + err
+      })
+    }
   }
-},
-
-async getTicketDetails(req,res){
-  try {
-    const ticket = await Ticket.findOne({
-      where: {
-        id: req.params.TicketId
-      },
-      include: [{
-        model: SoftwareList,
-        as: 'Software'
-      }]
-    })
-    res.send(ticket)
-  } catch (err) {
-    res.status(500).send({
-      error: "An error has occurred while retrieving ticket: " + err
-    })
-  }
-},
+}
 

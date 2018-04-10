@@ -15,6 +15,9 @@ module.exports = (app) => {
   app.get('/allTickets',
   TicketController.getAllTickets)
 
+  app.get('/getTicketDetails/:TicketId',
+  TicketController.getTicketDetails)
+
   app.post('/createNewTicket',
   TicketController.createNewTicket)
 
