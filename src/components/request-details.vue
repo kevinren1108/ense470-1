@@ -80,6 +80,11 @@ export default {
       } catch (err) {
         this.error = err
       }
+    },
+    checkIfApprover () {
+      for (item in this.$store.state.managedSoftwareIds) {
+        
+      }
     }
   }
 }
