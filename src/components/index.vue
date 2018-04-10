@@ -31,12 +31,12 @@
               </div>
               <div class="list-container">
                 <ul class="list">
-                  <div v-for="request in requests" :key="request.id">
+                  <div v-for="(request, index) in requests" :key="request.id">
                     <li v-if="request.approval_status === 'Approved' && request.UserId ===  $store.state.user.id" class="list__item list__item--request">
-                      <span class="list__item__title">{{request.id}}</span>
+                      <span class="list__item__title">{{request.Software.softwareName}}</span>
                       <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + request.id)">View</button></span>
                     </li>
-                    <hr v-if="request.approval_status === 'Approved' && request.UserId ===  $store.state.user.id" >
+                    <hr v-if="index != requests.length - 1">
                   </div>
                 </ul>
               </div>
@@ -54,16 +54,7 @@ export default {
     return {
       description: 'This is a portal for requesting access to any software you may need. Please log in to continue.',
       requests: null,
-      software: [
-        {
-          name: 'Lab Information System ',
-          id: 1
-        },
-        {
-          name: 'Chronic Disease Management',
-          id: 2
-        }
-      ]
+      software: []
     }
   },
   async mounted () {
