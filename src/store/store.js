@@ -24,7 +24,7 @@ export default new Vuex.Store({
     logout (state) {
       state.user = null
       state.token = null
-      managedSoftware = null
+      state.managedSoftware = null
       state.isUserLoggedIn = false
     },
     setManagedSoftware(state, payload) {
