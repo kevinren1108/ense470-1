@@ -12,19 +12,19 @@
                         <hr>
                         <span>Status: {{ticket.approval_status}}</span>
                         <hr>
-                        <span v-if="ticket.approval_status != 'Pending'">Approve by: {{approver}}</span>
+                        <span v-if="ticket.approval_status != 'Pending'">Approved by: {{approver}}</span>
                         <hr v-if="ticket.approval_status != 'Pending'">
-                        <span>Opened at: {{ticket.createdAt}}</span>
+                        <span>Created at: {{ticket.createdAt}}</span>
                         <hr>
                         <span>Last Updated at: {{ticket.updatedAt}}</span>
                         <hr>
                         <span v-if="ticket.approval_status != 'Pending'">Activate code: {{activate_code}}</span>
                         <hr v-if="ticket.approval_status != 'Pending'">
                         <div v-if="ticket.approval_status == 'Pending'">
-                        <template v-if="$store.state.user.account__type === 1">
-                                <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="approve">Approve</button></span>
-                                <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="deny">Deny</button></span>
-                        </template>
+                        <div v-if="checkIfApprover()">
+                          <span class="list__item__btn-container"><button class="btn btn--blue list__item__btn" @click="approve">Approve</button></span>
+                          <span class="list__item__btn-container"><button class="btn btn--blue list__item__btn" @click="deny">Deny</button></span>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -82,8 +82,15 @@ export default {
       }
     },
     checkIfApprover () {
-      for (item in this.$store.state.managedSoftwareIds) {
+      if (this.$store.state.managedSoftware !== null) {
+        for (let item of this.$store.state.managedSoftware) {
+          if (this.ticket.SoftwareId === item && this.$store.state.user.account__type === 1) {
+            return true
+          }
+        }
+        return false
       }
+      return false
     }
   }
 }
