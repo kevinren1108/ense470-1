@@ -5,7 +5,7 @@
       <h1 class="page__title">Request Software</h1>
     </div>
     <div style="position: relative;">
-      <input type="search" id="searchbar" placeholder="Search..." v-model="query.softwareName">
+      <input type="search" id="searchbar" placeholder="Search..." v-model="query">
       <div v-if="this.matches.length > 0 && !this.selected"  id="search-results-container" :style="{'z-index': this.zIndex}">
         <ul id="search-results-list">
           <li class="search-results-list__item" v-for="item in this.matches" :key="item.id" @click="resultSelect(item)">{{item.softwareName}}</li>
@@ -29,8 +29,9 @@ export default {
   data () {
     return {
       approval__status: 'Pending',
-      query: { softwareName: '', id: 0 },
+      query: '',
       software: null,
+      softwareId: 0,
       matches: [],
       selected: false,
       zIndex: 0
@@ -42,11 +43,11 @@ export default {
   },
   watch: {
     query: function (query) {
-      console.log(query)
+      console.log("watch function")
       let currMatches = []
-      if (query.softwareName.length > 0 && !this.selected) {
+      if (query.length > 0 && !this.selected) {
         for (let item of this.software) {
-          if (item.softwareName.toLowerCase().includes(query.softwareName.toLowerCase())) {
+          if (item.softwareName.toLowerCase().includes(query.toLowerCase())) {
             currMatches.push(item)
           }
         }
@@ -58,7 +59,8 @@ export default {
   },
   methods: {
     resultSelect: function (result) {
-      this.query = result
+      this.query = result.softwareName
+      this.softwareId = result.id
       this.selected = true
     },
     async getSoftware () {
@@ -73,7 +75,7 @@ export default {
       try {
         const response = await TicketService.CreateNewTicket({
           approval_status: this.approval__status,
-          software_requested: this.query.id,
+          SoftwareId: this.softwareId,
           UserId: this.$store.state.user.id
         }).then(response => this.$router.push('/my-requests'))
       } catch (error) {

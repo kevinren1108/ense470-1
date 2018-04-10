@@ -48,6 +48,10 @@ export default {
       tickets: null
     }
   },
+  async created () {
+    this.requests = (await TicketService.GetMyRequests($store.state.user.id)).data
+    this.tickets = (await TicketService.GetMyPendingTickets($store.state.user.id)).data
+  },
   async mounted () {
     this.requests = (await TicketService.GetMyRequests($store.state.user.id)).data
     this.tickets = (await TicketService.GetMyPendingTickets($store.state.user.id)).data

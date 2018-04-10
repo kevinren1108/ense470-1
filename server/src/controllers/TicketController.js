@@ -4,7 +4,12 @@ const {Ticket, SoftwareList} = require('../models')
 module.exports = {
   async getAllTickets (req, res) {
     try {
-      const ticket = await Ticket.findAll()
+      const ticket = await Ticket.findAll({
+        include: [{
+          model: SoftwareList,
+          as: 'Software'
+        }]
+      })
       res.send(ticket)
     } catch (err){
       res.status(500).send({
