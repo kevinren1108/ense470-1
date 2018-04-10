@@ -139,7 +139,6 @@ module.exports = {
     }
   },
   async getTicketDetails(req,res){
-    console.log("HHEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEECK")
     try {
       const ticket = await Ticket.findOne({
         where: {
