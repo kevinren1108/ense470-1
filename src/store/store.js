@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     token: null,
     user: null,
-    isUserLoggedIn: false
+    isUserLoggedIn: false,
+    managedSoftware: null
   },
   mutations: {
     login (state, payload) {
@@ -23,7 +24,11 @@ export default new Vuex.Store({
     logout (state) {
       state.user = null
       state.token = null
+      managedSoftware = null
       state.isUserLoggedIn = false
+    },
+    setManagedSoftware(state, payload) {
+      state.managedSoftware = payload.managedSoftware
     }
   },
   actions: {
@@ -32,6 +37,9 @@ export default new Vuex.Store({
     },
     logout ({commit}) {
       commit('logout')
+    },
+    setManagedSoftware({commit}, payload) {
+      commit('setManagedSoftware', payload)
     }
   }
 })

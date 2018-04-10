@@ -23,6 +23,20 @@ module.exports = {
       res.status(500).send({
         error: 'An error has occured while creating new approver'
       })
-      }
     }
+  },
+  async getManagedSoftware (req, res) {
+    try {
+      const software = await ApproverList.findAll({
+        where: {
+          UserId: req.params.UserId
+        }
+      })
+      res.send(software)
+    } catch (err){
+      res.status(500).send({
+        error: 'An error has occured while retrieving managed software: ' + err
+      })
+    }
+  }
 }

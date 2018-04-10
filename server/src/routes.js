@@ -2,7 +2,6 @@ const AuthenticationController = require('./controllers/AuthenticationController
 const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
 const TicketController = require('./controllers/TicketController')
 const SoftwareListController = require('./controllers/SoftwareListController')
-const UserController = require('./controllers/UserController')
 const ApproverListController = require('./controllers/ApproverListController')
 
 module.exports = (app) => {
@@ -34,9 +33,6 @@ module.exports = (app) => {
   app.post('/createNewSoftware',
   SoftwareListController.createNewSoftware)
 
-  app.post('/getID',
-  UserController.getID)
-
   app.post('/createNewApprover',
   ApproverListController.createNewApprover)
 
@@ -45,6 +41,9 @@ module.exports = (app) => {
 
   app.get('/getMyPendingTickets/:UserId',
   TicketController.getMyPendingTickets)
+
+  app.get('/getManagedSoftware/:UserId',
+  ApproverListController.getManagedSoftware)
 
 }
 

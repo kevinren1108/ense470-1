@@ -67,8 +67,9 @@ export default {
     }
   },
   async mounted () {
-    this.requests = (await TicketService.GetAllTickets()).data
-    // do a request to the backend for all the tickets
+    if (this.$store.state.isUserLoggedIn) {
+      this.requests = (await TicketService.GetAllTickets()).data
+    }
   }
 }
 </script>

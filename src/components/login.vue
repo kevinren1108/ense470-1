@@ -14,6 +14,7 @@
 
 <script>
 import AuthenticationServices from '@/services/AuthenticationServices'
+import ApproverServices from '@/services/ApproverServices'
 export default {
   name: 'login',
   data () {
@@ -35,6 +36,16 @@ export default {
             password: this.password
           })
           this.$store.dispatch('login', {user: response.data.user, token: response.data.token})
+            .then(async () => {
+              if (this.$store.state.user.id == 1) {
+                try {
+                  const software = await ApproverServices.GetManagedSoftware(this.$store.state.user.id)
+                  this.$store.dispatch('setManagedSoftware', {managedSoftware: software.data})
+                } catch (error) {
+                  this.error = error
+                }
+              }
+            })
             .then(() => this.$router.push('/'))
         } catch (error) {
           this.error = error
