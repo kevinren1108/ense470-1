@@ -23,6 +23,7 @@ module.exports = {
       const ticket = await Ticket.findAll({
         where: {
           UserId: req.params.UserId,
+          approval_status: "pending"
         },
         include: [{
           model: SoftwareList,
@@ -39,12 +40,13 @@ module.exports = {
   async getMyPendingTickets(req, res) {
     try {
       const managedSoftwareIds = await ApproverList.findAll({
-        attributes: ['SoftwareId'],
         where: {
-          UserId: req.params.UserId
-        }
-      }).then(async managedSoftwareIds => {
-        console.log(managedSoftwareIds)
+          UserId: req.params.UserId,
+          approval_status: "Pending"
+        },
+         attributes: ['SoftwareId']
+      }).then( async managedSoftwareIds => {
+        //console.log("what the actual fuck is going on ", managedSoftwareIds)
         await Ticket.findAll({
           where: {
             SoftwareId: {
@@ -79,14 +81,20 @@ module.exports = {
   async getApprovedTickets(req, res) {
     try {
       const ticket = await Ticket.findAll({
-          where: {
-            user_id: req.user_id,
-            approval_status: 'Approved'
-          }
-        })
-      res.status(200).send(ticket)
+        where: {
+          UserId: req.params.UserId,
+          approval_status: "Approved"
+        },
+        include: [{
+          model: SoftwareList,
+          as: 'Software'
+        }]
+      })
+      res.send(ticket)
     } catch (err) {
-      res.status(500).send({error: "Error fetching approved software"})
+      res.status(500).send({
+        error: "An error has occurred while retrieving user's requests: " + err
+      })
     }
   },
   async approveTicket(req, res) {
