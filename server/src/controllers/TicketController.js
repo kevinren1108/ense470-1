@@ -38,18 +38,26 @@ module.exports = {
   },
   async getMyPendingTickets(req, res) {
     try {
-      const managedSoftwareIds = await ApproverList.findAll({
+      console.log("USER ID ================ ", req.params.UserId)
+      const softwareIds = await ApproverList.findAll({
         attributes: ['SoftwareId'],
         where: {
           UserId: req.params.UserId
-        }
+        },
+        raw: true
       }).then(async managedSoftwareIds => {
-        console.log(managedSoftwareIds)
+        console.log("SOFTWARE IDS ================ ", managedSoftwareIds)
+        let ids = []
+        for (item of managedSoftwareIds) {
+          ids.push(item.SoftwareId)
+        }
+        console.log("SOFTWARE IDS ================ ", ids)
         await Ticket.findAll({
           where: {
             SoftwareId: {
-              [Sequelize.Op.or]: managedSoftwareIds
-            }
+              [Sequelize.Op.or]: ids
+            },
+            approval_status: "Pending"
           },
           include: [{
             model: SoftwareList,

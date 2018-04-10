@@ -8,9 +8,9 @@
                 <ul class="list">
                     <div v-for="ticket in tickets" :key="ticket.id">
                       <div v-if="ticket.id == $route.path.split('/')[$route.path.split('/').length-1]" >
-                        <span>Software Name: {{ticket.id}}</span>
+                        <span>Software Name: {{ticket.Software.softwareName}}</span>
                         <hr>
-                        <span>Ticket state: {{ticket.approval_status}}</span>
+                        <span>Status: {{ticket.approval_status}}</span>
                         <hr>
                         <span v-if="ticket.approval_status != 'Pending'">Approve by: {{approver}}</span>
                         <hr v-if="ticket.approval_status != 'Pending'">
