@@ -23,7 +23,7 @@ module.exports = {
       const ticket = await Ticket.findAll({
         where: {
           UserId: req.params.UserId,
-          approval_status: "pending"
+          approval_status: "Pending"
         },
         include: [{
           model: SoftwareList,
@@ -140,4 +140,24 @@ module.exports = {
       res.status(500).send(err)
     }
   }
-}
+},
+
+async getTicketDetails(req,res){
+  try {
+    const ticket = await Ticket.findOne({
+      where: {
+        id: req.params.TicketId
+      },
+      include: [{
+        model: SoftwareList,
+        as: 'Software'
+      }]
+    })
+    res.send(ticket)
+  } catch (err) {
+    res.status(500).send({
+      error: "An error has occurred while retrieving ticket: " + err
+    })
+  }
+},
+
