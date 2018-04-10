@@ -25,7 +25,7 @@
           <ul class="list">
             <div v-for="ticket in tickets" :key="ticket.id">
               <li  v-if="ticket.approval_status === 'Pending'" class="list__item list__item--request">
-                <span class="list__item__title">{{ticket.id}}</span>
+                <span class="list__item__title">{{ticket.Software.softwareName}}</span>
                 <span class="list__item__status">{{ticket.approval_status}}</span>
                 <span class="list__item__btn-container"><button class="btn--blue list__item__btn" @click="$router.push('/request/' + ticket.id)">View</button></span>
               </li>

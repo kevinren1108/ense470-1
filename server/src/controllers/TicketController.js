@@ -1,5 +1,6 @@
-const {Ticket, SoftwareList} = require('../models')
-
+const {Ticket, SoftwareList, ApproverList} = require('../models')
+const Sequelize = require('sequelize')
+// const Op = Sequelize.Op
 
 module.exports = {
   async getAllTickets (req, res) {
@@ -37,16 +38,26 @@ module.exports = {
   },
   async getMyPendingTickets(req, res) {
     try {
-      const tickets = await Ticket.findAll({
+      const managedSoftwareIds = await ApproverList.findAll({
+        attributes: ['SoftwareId'],
         where: {
-          SoftwareId: {
-            [Op.or]: req.params.SoftwareIds
-          }
-        },
-        include: [{
-          model: SoftwareList,
-          as: 'Software'
-        }]
+          UserId: req.params.UserId
+        }
+      }).then(async managedSoftwareIds => {
+        console.log(managedSoftwareIds)
+        await Ticket.findAll({
+          where: {
+            SoftwareId: {
+              [Sequelize.Op.or]: managedSoftwareIds
+            }
+          },
+          include: [{
+            model: SoftwareList,
+            as: 'Software'
+          }]
+        }).then(tickets => {
+          res.send(tickets)
+        })
       })
     } catch(err) {
       res.status(500).send({
