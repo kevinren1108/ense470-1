@@ -10,8 +10,8 @@ export default {
   GetMyPendingTickets (userId) {
     return Api().get('getMyPendingTickets/' + userId)
   },
-  GetApprovedTickets () {
-    return Api().get('getApprovedTickets')
+  GetApprovedTickets (userId) {
+    return Api().get('getApprovedTickets/' + userId)
   },
   GetTicketDetails(ticketId) {
     return Api().get('getTicketDetails/' + ticketId)

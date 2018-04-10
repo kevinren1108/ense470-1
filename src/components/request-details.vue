@@ -18,7 +18,7 @@
                         <hr>
                         <span>Last Updated at: {{ticket.updatedAt}}</span>
                         <hr>
-                        <span v-if="ticket.approval_status != 'Pending'">Activate code: {{activate_code}}</span>
+                        <span v-if="ticket.approval_status != 'Pending'">Activate code: {{ticket.Software.softwareActivationLink}}</span>
                         <hr v-if="ticket.approval_status != 'Pending'">
                         <div v-if="ticket.approval_status == 'Pending'">
                         <div v-if="checkIfApprover()">
@@ -49,6 +49,7 @@ export default {
   async mounted () {
     this.ticket = (await TicketService.GetTicketDetails(this.$route.params.id)).data
     // do a request to the backend for all the tickets
+    this.activate_code = ticket.activate_code
   },
   async decision () {
     try {
