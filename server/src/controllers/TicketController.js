@@ -39,8 +39,14 @@ module.exports = {
     try {
       const tickets = await Ticket.findAll({
         where: {
-          // Get tickets where SoftwareId matches SoftwareId linked to req.UserId in ApproverLists
-        }
+          SoftwareId: {
+            [Op.or]: req.params.SoftwareIds
+          }
+        },
+        include: [{
+          model: SoftwareList,
+          as: 'Software'
+        }]
       })
     } catch(err) {
       res.status(500).send({

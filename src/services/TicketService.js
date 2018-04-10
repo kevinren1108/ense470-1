@@ -7,8 +7,8 @@ export default {
   GetMyRequests (userId) {
     return Api().get('getMyRequests/' + userId)
   },
-  GetMyPendingTickets (userId) {
-    return Api().get('getMyPendingTickets/' + userId)
+  GetMyPendingTickets (softwareIds) {
+    return Api().get('getMyPendingTickets', { params: softwareIds })
   },
   GetApprovedTickets () {
     return Api().get('getApprovedTickets')
